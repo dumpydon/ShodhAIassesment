@@ -1,0 +1,612 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Version 1.0 workflow review bundle",
+  "description": "Structure of a bundle submitted for review. The application checks typed predicates, unique anchors, referential integrity, approval ordering, and the other cross-artifact constraints.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "revision": {
+      "$ref": "#/$defs/identifier"
+    },
+    "fields": {
+      "$ref": "#/$defs/fields"
+    },
+    "requirements": {
+      "$ref": "#/$defs/requirements"
+    },
+    "specification": {
+      "$ref": "#/$defs/specification"
+    },
+    "workflow": {
+      "$ref": "#/$defs/workflow"
+    },
+    "snippets": {
+      "$ref": "#/$defs/snippets"
+    },
+    "approvals": {
+      "$ref": "#/$defs/approvals"
+    },
+    "id": {},
+    "case_id": {},
+    "bundle_id": {}
+  },
+  "required": [
+    "schema_version",
+    "revision",
+    "fields",
+    "requirements",
+    "specification",
+    "workflow",
+    "snippets",
+    "approvals"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "fieldName": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$"
+    },
+    "route": {
+      "type": "string",
+      "maxLength": 128,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_-]*(\\.[A-Za-z_][A-Za-z0-9_-]*)*$"
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^[^\\r\\n]*\\S[^\\r\\n]*$"
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "timeUnit": {
+      "type": "string",
+      "pattern": "^(?:[mM][sS]|[mM][iI][lL][lL][iI][sS][eE][cC][oO][nN][dD]|[mM][iI][lL][lL][iI][sS][eE][cC][oO][nN][dD][sS]|[sS]|[sS][eE][cC]|[sS][eE][cC][oO][nN][dD]|[sS][eE][cC][oO][nN][dD][sS]|[mM]|[mM][iI][nN]|[mM][iI][nN][uU][tT][eE]|[mM][iI][nN][uU][tT][eE][sS]|[hH]|[hH][rR]|[hH][oO][uU][rR]|[hH][oO][uU][rR][sS])$"
+    },
+    "field": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "number",
+            "string",
+            "boolean"
+          ]
+        },
+        "nullable": {
+          "type": "boolean",
+          "default": false
+        },
+        "unit": {
+          "$ref": "#/$defs/timeUnit"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false,
+      "if": {
+        "properties": {
+          "type": {
+            "const": "number"
+          }
+        }
+      },
+      "else": {
+        "not": {
+          "required": [
+            "unit"
+          ]
+        }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "maxProperties": 32,
+      "propertyNames": {
+        "$ref": "#/$defs/fieldName"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/field"
+      }
+    },
+    "ruleIds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "maxItems": 256,
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "predicate": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "not": {
+              "$ref": "#/$defs/predicate"
+            }
+          },
+          "required": [
+            "not"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "all": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/predicate"
+              },
+              "minItems": 1,
+              "maxItems": 128
+            }
+          },
+          "required": [
+            "all"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "any": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/predicate"
+              },
+              "minItems": 1,
+              "maxItems": 128
+            }
+          },
+          "required": [
+            "any"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "field": {
+              "$ref": "#/$defs/fieldName"
+            },
+            "op": {
+              "enum": [
+                "missing",
+                "present"
+              ]
+            }
+          },
+          "required": [
+            "field",
+            "op"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "field": {
+              "$ref": "#/$defs/fieldName"
+            },
+            "op": {
+              "enum": [
+                "==",
+                "!=",
+                "<",
+                "<=",
+                ">",
+                ">="
+              ]
+            },
+            "value": {
+              "type": [
+                "number",
+                "string",
+                "boolean"
+              ]
+            },
+            "unit": {
+              "$ref": "#/$defs/timeUnit"
+            }
+          },
+          "required": [
+            "field",
+            "op",
+            "value"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "requirement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "order": {
+          "$ref": "#/$defs/order"
+        },
+        "location": {
+          "$ref": "#/$defs/location"
+        },
+        "text": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "id",
+        "order",
+        "location",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "specificationRule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "order": {
+          "$ref": "#/$defs/order"
+        },
+        "when": {
+          "$ref": "#/$defs/predicate"
+        },
+        "route": {
+          "$ref": "#/$defs/route"
+        },
+        "location": {
+          "$ref": "#/$defs/location"
+        },
+        "rule_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "rule_ids": {
+          "$ref": "#/$defs/ruleIds"
+        }
+      },
+      "required": [
+        "id",
+        "order",
+        "when",
+        "route"
+      ],
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "rule_id"
+          ]
+        },
+        {
+          "required": [
+            "rule_ids"
+          ]
+        }
+      ]
+    },
+    "branch": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/identifier"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "to": {
+              "$ref": "#/$defs/identifier"
+            },
+            "location": {
+              "$ref": "#/$defs/location"
+            }
+          },
+          "required": [
+            "to"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "node": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/identifier"
+            },
+            "kind": {
+              "const": "decision"
+            },
+            "when": {
+              "$ref": "#/$defs/predicate"
+            },
+            "location": {
+              "$ref": "#/$defs/location"
+            },
+            "rule_id": {
+              "$ref": "#/$defs/identifier"
+            },
+            "rule_ids": {
+              "$ref": "#/$defs/ruleIds"
+            },
+            "true": {
+              "$ref": "#/$defs/branch"
+            },
+            "false": {
+              "$ref": "#/$defs/branch"
+            },
+            "snippet_id": {
+              "$ref": "#/$defs/identifier"
+            }
+          },
+          "required": [
+            "id",
+            "kind",
+            "when"
+          ],
+          "additionalProperties": false,
+          "not": {
+            "required": [
+              "rule_id",
+              "rule_ids"
+            ]
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/identifier"
+            },
+            "kind": {
+              "const": "route"
+            },
+            "route": {
+              "$ref": "#/$defs/route"
+            },
+            "location": {
+              "$ref": "#/$defs/location"
+            },
+            "rule_id": {
+              "$ref": "#/$defs/identifier"
+            },
+            "rule_ids": {
+              "$ref": "#/$defs/ruleIds"
+            }
+          },
+          "required": [
+            "id",
+            "kind",
+            "route"
+          ],
+          "additionalProperties": false,
+          "not": {
+            "required": [
+              "rule_id",
+              "rule_ids"
+            ]
+          }
+        }
+      ]
+    },
+    "snippet": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "source": {
+          "$ref": "#/$defs/text"
+        },
+        "location": {
+          "$ref": "#/$defs/location"
+        },
+        "rule_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "rule_ids": {
+          "$ref": "#/$defs/ruleIds"
+        }
+      },
+      "required": [
+        "id",
+        "source"
+      ],
+      "additionalProperties": false,
+      "not": {
+        "required": [
+          "rule_id",
+          "rule_ids"
+        ]
+      }
+    },
+    "approval": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "status": {
+          "enum": [
+            "approved",
+            "pending",
+            "proposed",
+            "rejected"
+          ]
+        },
+        "revision": {
+          "$ref": "#/$defs/identifier"
+        },
+        "requirement_version": {
+          "$ref": "#/$defs/identifier"
+        },
+        "rule_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "order": {
+          "$ref": "#/$defs/order"
+        },
+        "text": {
+          "$ref": "#/$defs/text"
+        },
+        "location": {
+          "$ref": "#/$defs/location"
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "revision",
+        "requirement_version",
+        "rule_id",
+        "order",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "requirements": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/identifier"
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/requirement"
+          },
+          "maxItems": 256,
+          "minItems": 1
+        },
+        "location": {
+          "$ref": "#/$defs/location"
+        }
+      },
+      "required": [
+        "version",
+        "rules"
+      ],
+      "additionalProperties": false
+    },
+    "specification": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/identifier"
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/specificationRule"
+          },
+          "maxItems": 256
+        },
+        "location": {
+          "$ref": "#/$defs/location"
+        }
+      },
+      "required": [
+        "version",
+        "rules"
+      ],
+      "additionalProperties": false
+    },
+    "workflow": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/identifier"
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/node"
+          },
+          "maxItems": 256
+        },
+        "entry": {
+          "$ref": "#/$defs/identifier"
+        },
+        "location": {
+          "$ref": "#/$defs/location"
+        }
+      },
+      "required": [
+        "version",
+        "nodes",
+        "entry"
+      ],
+      "additionalProperties": false
+    },
+    "snippets": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/identifier"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/snippet"
+          },
+          "maxItems": 256
+        },
+        "location": {
+          "$ref": "#/$defs/location"
+        }
+      },
+      "required": [
+        "version",
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "approvals": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/identifier"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/approval"
+          },
+          "maxItems": 256
+        },
+        "location": {
+          "$ref": "#/$defs/location"
+        }
+      },
+      "required": [
+        "version",
+        "records"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
