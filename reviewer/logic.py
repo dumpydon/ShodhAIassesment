@@ -404,14 +404,14 @@ def encode_ticket(ticket: Ticket) -> dict[str, Any]:
         if value is ABSENT:
             continue
         if isinstance(value, Fraction):
-            if value.denominator == 1:
-                value = value.numerator
-            else:
-                approximate = float(value)
-                if Fraction(str(approximate)) == value:
-                    value = approximate
-                else:
-                    value = {"numerator": value.numerator, "denominator": value.denominator}
+            try:
+                scalar = value.numerator if value.denominator == 1 else float(value)
+                if exact_number(scalar) == value:
+                    result[field] = scalar
+                    continue
+            except (ContractError, OverflowError):
+                pass
+            value = {"numerator": value.numerator, "denominator": value.denominator}
         result[field] = value
     return result
 

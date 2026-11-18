@@ -88,6 +88,25 @@ class CoreTests(unittest.TestCase):
         self.assertEqual(witness["expected_route"], "help")
         self.assertEqual(witness["actual_route"], "regular")
 
+    def test_extreme_numeric_witnesses_roundtrip(self):
+        cases = (
+            ("9" * 115 + "e120", "hours", "minutes", Fraction(60)),
+            ("1e-120", "milliseconds", "seconds", Fraction(1, 1000)),
+        )
+        for literal, source_unit, field_unit, scale in cases:
+            with self.subTest(source_unit=source_unit):
+                bundle = example()
+                bundle["fields"]["age"]["unit"] = field_unit
+                bundle["requirements"]["rules"][0]["text"] = (
+                    f"IF age == {literal} {source_unit} THEN help"
+                )
+                bundle["specification"]["rules"][0]["when"] = False
+                result = review_core(bundle)
+                finding = findings(result, "SPEC_ROUTE_MISMATCH")[0]
+                witness = finding["counterexample"]["ticket"]
+                decoded = decode_ticket(witness, parse_fields(bundle["fields"]))
+                self.assertEqual(decoded["age"], Fraction(literal) * scale)
+
     def test_conflict_marks_the_shadowed_fallback_unreviewed(self):
         bundle = example()
         bundle["approvals"]["records"] = [

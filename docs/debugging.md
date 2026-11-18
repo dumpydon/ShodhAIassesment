@@ -49,3 +49,24 @@ FAILED (failures=1)
 The validator now excludes disputed locations from its evidence catalog and exposes a source anchor only when it matches the canonical reference in full. The regression requires a citation using the conflicting locator to raise `ModelIssue`.
 
 The focused rerun returned `Ran 1 test in 0.000s` and `OK`.
+
+## Maintenance after the blind checkpoint
+
+An independent development probe converted a supported source literal to a 237-digit base-unit integer. The counterexample contained that exact integer, but replay rejected it under the scalar literal cap. A second probe converted `1e-120` milliseconds to `1e-123` seconds and reached the scalar exponent cap. The focused test reproduced both failures.
+
+```sh
+python3 -m unittest discover -s tests -p test_core.py -k test_extreme_numeric_witnesses_roundtrip -v
+```
+
+Observed failure excerpt
+
+```text
+reviewer.logic.ContractError: Numeric literal is invalid or too large.
+reviewer.logic.ContractError: Numeric exponent is too large.
+
+Ran 1 test in 0.002s
+
+FAILED (errors=2)
+```
+
+The encoder now previews the scalar using the replay decoder's numeric validation. It uses the existing numerator/denominator form if the scalar exceeds bounds or loses precision. The regression asserts exact decoded values for both conversions. The focused rerun returned `Ran 1 test in 0.001s` and `OK`.

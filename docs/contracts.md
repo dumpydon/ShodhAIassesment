@@ -28,7 +28,7 @@ Supported field types are `number`, `string`, and `boolean`. Nullable fields per
 - Ordinary declarative comparisons against missing values yield false. Negation, including negation of a comparison, applies to the resulting Boolean.
 - Numbers support `==`, `!=`, `<`, `<=`, `>`, and `>=`. Strings and Booleans support `==` and `!=`.
 - Numeric values and literals use exact rationals in the declared base unit. A threshold may give another time unit for a field with a time unit, with exact conversion. Unit names are case-insensitive. Supported spellings include `ms`, `millisecond(s)`, `s`, `sec`, `second(s)`, `m`, `min`, `minute(s)`, `h`, `hr`, and `hour(s)`.
-- A counterexample ticket uses JSON scalars in the field base unit. A rational value without an exact scalar representation uses `{"numerator":1,"denominator":60}`, suitable for exact rechecking with `reviewer.logic.decode_ticket`. An omitted key represents an absent field.
+- A counterexample ticket uses values in the field base unit. The encoder uses a JSON scalar when `reviewer.logic.decode_ticket` can recover the value exactly within the scalar literal bounds. Other values use an exact ratio such as `{"numerator":1,"denominator":60}`. An omitted key represents an absent field.
 
 Source rules and approved replacements each use a single controlled sentence.
 
