@@ -1,0 +1,265 @@
+{
+  "approvals": {
+    "records": [],
+    "version": "approvals-v1"
+  },
+  "fields": {
+    "category": {
+      "nullable": true,
+      "type": "string"
+    },
+    "urgent": {
+      "type": "boolean"
+    },
+    "vip": {
+      "type": "boolean"
+    },
+    "waiting": {
+      "nullable": true,
+      "type": "number",
+      "unit": "seconds"
+    }
+  },
+  "requirements": {
+    "rules": [
+      {
+        "id": "ref_faa682925d20",
+        "location": "policy#ref_faa682925d20",
+        "order": 30,
+        "text": "IF waiting >= 21 minutes THEN escalation"
+      },
+      {
+        "id": "ref_23cbea919f15",
+        "location": "policy#ref_23cbea919f15",
+        "order": 20,
+        "text": "IF urgent == true THEN priority"
+      },
+      {
+        "id": "ref_a615cdf208ff",
+        "location": "policy#ref_a615cdf208ff",
+        "order": 15,
+        "text": "IF vip == true AND (category == \"renewals\" OR category == \"telemetry\") THEN specialist"
+      },
+      {
+        "id": "ref_78fc72853ba9",
+        "location": "policy#ref_78fc72853ba9",
+        "order": 40,
+        "text": "OTHERWISE THEN normal"
+      },
+      {
+        "id": "ref_5e0396e98e3a",
+        "location": "policy#ref_5e0396e98e3a",
+        "order": 10,
+        "text": "IF category IS MISSING THEN manual"
+      }
+    ],
+    "version": "policy-v1"
+  },
+  "revision": "rev1",
+  "schema_version": "1.0",
+  "snippets": {
+    "items": [
+      {
+        "id": "ref_48508637dd07",
+        "source": "def decide(ticket):\n    return ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 1260\n"
+      },
+      {
+        "id": "ref_399050cd5934",
+        "source": "def decide(ticket):\n    return ticket.get(\"category\") is None\n"
+      },
+      {
+        "id": "ref_c01890e95b22",
+        "source": "def decide(ticket):\n    return ticket.get(\"urgent\") == True\n"
+      },
+      {
+        "id": "ref_7936ab2ae79f",
+        "source": "def decide(ticket):\n    if ticket[\"category\"] == \"renewals\":\n        return ticket.get(\"vip\") == True\n    return ticket[\"category\"] == \"telemetry\" and ticket.get(\"vip\") == True\n"
+      }
+    ],
+    "version": "py-v1"
+  },
+  "specification": {
+    "rules": [
+      {
+        "id": "ref_ce48f49193b5",
+        "order": 30,
+        "route": "escalation",
+        "rule_id": "ref_faa682925d20",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "seconds",
+          "value": 1260
+        }
+      },
+      {
+        "id": "ref_f99a47bbeeb2",
+        "order": 10,
+        "route": "manual",
+        "rule_id": "ref_5e0396e98e3a",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "id": "ref_ca24dd61cffb",
+        "order": 20,
+        "route": "priority",
+        "rule_id": "ref_23cbea919f15",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "id": "ref_276bb20215f0",
+        "order": 40,
+        "route": "normal",
+        "rule_id": "ref_78fc72853ba9",
+        "when": true
+      },
+      {
+        "id": "ref_0138ab6854a1",
+        "order": 15,
+        "route": "specialist",
+        "rule_id": "ref_a615cdf208ff",
+        "when": {
+          "any": [
+            {
+              "all": [
+                {
+                  "field": "category",
+                  "op": "==",
+                  "value": "renewals"
+                },
+                {
+                  "field": "vip",
+                  "op": "==",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "all": [
+                {
+                  "field": "category",
+                  "op": "==",
+                  "value": "telemetry"
+                },
+                {
+                  "field": "vip",
+                  "op": "==",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "version": "spec-v1"
+  },
+  "workflow": {
+    "entry": "ref_223cfc8b4c31",
+    "nodes": [
+      {
+        "false": "ref_a8a1f18df7ea",
+        "id": "ref_223cfc8b4c31",
+        "kind": "decision",
+        "rule_id": "ref_5e0396e98e3a",
+        "snippet_id": "ref_399050cd5934",
+        "true": "ref_fd67563ff56a",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "false": "ref_82ad11b950b6",
+        "id": "ref_c40202189dfc",
+        "kind": "decision",
+        "rule_id": "ref_faa682925d20",
+        "snippet_id": "ref_48508637dd07",
+        "true": "ref_acfd86ad0c63",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 21
+        }
+      },
+      {
+        "id": "ref_82ad11b950b6",
+        "kind": "route",
+        "route": "normal"
+      },
+      {
+        "id": "ref_acfd86ad0c63",
+        "kind": "route",
+        "route": "escalation"
+      },
+      {
+        "id": "ref_0d367417cff3",
+        "kind": "route",
+        "route": "priority"
+      },
+      {
+        "id": "ref_fd67563ff56a",
+        "kind": "route",
+        "route": "manual"
+      },
+      {
+        "false": "ref_36e1ace16d4d",
+        "id": "ref_a8a1f18df7ea",
+        "kind": "decision",
+        "rule_id": "ref_a615cdf208ff",
+        "snippet_id": "ref_7936ab2ae79f",
+        "true": "ref_18230880a50b",
+        "when": {
+          "all": [
+            {
+              "any": [
+                {
+                  "field": "category",
+                  "op": "==",
+                  "value": "telemetry"
+                },
+                {
+                  "field": "category",
+                  "op": "==",
+                  "value": "renewals"
+                }
+              ]
+            },
+            {
+              "field": "vip",
+              "op": "==",
+              "value": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "ref_18230880a50b",
+        "kind": "route",
+        "route": "specialist"
+      },
+      {
+        "false": "ref_c40202189dfc",
+        "id": "ref_36e1ace16d4d",
+        "kind": "decision",
+        "rule_id": "ref_23cbea919f15",
+        "snippet_id": "ref_c01890e95b22",
+        "true": "ref_0d367417cff3",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      }
+    ],
+    "version": "graph-v1"
+  }
+}

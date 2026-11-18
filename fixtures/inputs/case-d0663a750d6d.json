@@ -1,0 +1,178 @@
+{
+  "approvals": {
+    "records": [],
+    "version": "approvals-v1"
+  },
+  "fields": {
+    "category": {
+      "nullable": true,
+      "type": "string"
+    },
+    "urgent": {
+      "type": "boolean"
+    },
+    "waiting": {
+      "nullable": true,
+      "type": "number",
+      "unit": "minutes"
+    }
+  },
+  "requirements": {
+    "rules": [
+      {
+        "id": "ref_9412c71ed51f",
+        "location": "policy#ref_9412c71ed51f",
+        "order": 20,
+        "text": "IF urgent == true THEN priority"
+      },
+      {
+        "id": "ref_28ed11c44338",
+        "location": "policy#ref_28ed11c44338",
+        "order": 10,
+        "text": "IF category IS MISSING THEN manual"
+      },
+      {
+        "id": "ref_23af6f6c000d",
+        "location": "policy#ref_23af6f6c000d",
+        "order": 40,
+        "text": "OTHERWISE THEN normal"
+      },
+      {
+        "id": "ref_79222fa228d7",
+        "location": "policy#ref_79222fa228d7",
+        "order": 30,
+        "text": "IF waiting >= 30 minutes THEN escalation"
+      }
+    ],
+    "version": "policy-v1"
+  },
+  "revision": "rev1",
+  "schema_version": "1.0",
+  "snippets": {
+    "items": [
+      {
+        "id": "ref_64c34be32416",
+        "source": "def decide(ticket):\n    return ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 30\n"
+      },
+      {
+        "id": "ref_69b97228f4bc",
+        "source": "def decide(ticket):\n    return ticket.get(\"urgent\") == True\n"
+      },
+      {
+        "id": "ref_6e1722a07352",
+        "source": "def decide(ticket):\n    return ticket.get(\"category\") is None\n"
+      }
+    ],
+    "version": "py-v1"
+  },
+  "specification": {
+    "rules": [
+      {
+        "id": "ref_45538925d47f",
+        "order": 40,
+        "route": "normal",
+        "rule_id": "ref_23af6f6c000d",
+        "when": true
+      },
+      {
+        "id": "ref_9c2006645ffd",
+        "order": 10,
+        "route": "manual",
+        "rule_id": "ref_28ed11c44338",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "id": "ref_de54e72682a7",
+        "order": 20,
+        "route": "priority",
+        "rule_id": "ref_9412c71ed51f",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "id": "ref_875c766ea6b8",
+        "order": 30,
+        "route": "escalation",
+        "rule_id": "ref_79222fa228d7",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 30
+        }
+      }
+    ],
+    "version": "spec-v1"
+  },
+  "workflow": {
+    "entry": "ref_8afa42597f07",
+    "nodes": [
+      {
+        "id": "ref_0089cef80e54",
+        "kind": "route",
+        "route": "manual"
+      },
+      {
+        "id": "ref_496b5e858c85",
+        "kind": "route",
+        "route": "escalation"
+      },
+      {
+        "id": "ref_a9ea0064a403",
+        "kind": "route",
+        "route": "priority"
+      },
+      {
+        "id": "ref_7fc1caa1a35d",
+        "kind": "route",
+        "route": "normal"
+      },
+      {
+        "false": "ref_7db7bd971831",
+        "id": "ref_992398bca2f3",
+        "kind": "decision",
+        "rule_id": "ref_9412c71ed51f",
+        "snippet_id": "ref_69b97228f4bc",
+        "true": "ref_a9ea0064a403",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "false": "ref_992398bca2f3",
+        "id": "ref_8afa42597f07",
+        "kind": "decision",
+        "rule_id": "ref_28ed11c44338",
+        "snippet_id": "ref_6e1722a07352",
+        "true": "ref_0089cef80e54",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "false": "ref_7fc1caa1a35d",
+        "id": "ref_7db7bd971831",
+        "kind": "decision",
+        "rule_id": "ref_79222fa228d7",
+        "snippet_id": "ref_64c34be32416",
+        "true": "ref_496b5e858c85",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 30
+        }
+      }
+    ],
+    "version": "graph-v1"
+  }
+}

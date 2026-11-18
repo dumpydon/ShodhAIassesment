@@ -1,0 +1,1530 @@
+{
+  "ablation": {
+    "decision_changes": [
+      {
+        "after": "PASS",
+        "before": "CHANGES_REQUIRED",
+        "case_id": "case-5bcde7f20ec9",
+        "case_name": "inclusive_boundary_lost",
+        "expected": "CHANGES_REQUIRED",
+        "split": "development"
+      },
+      {
+        "after": "PASS",
+        "before": "CHANGES_REQUIRED",
+        "case_id": "case-be514acbdc02",
+        "case_name": "script_accepts_excluded_boundary",
+        "expected": "CHANGES_REQUIRED",
+        "split": "held_out"
+      }
+    ],
+    "mechanism": "omit_boundaries"
+  },
+  "baseline_to_final_decision_changes": [
+    {
+      "after": "INCOMPLETE",
+      "before": "PASS",
+      "case_id": "case-0d8ff631e84e",
+      "case_name": "unsupported_script_call",
+      "expected": "INCOMPLETE",
+      "split": "development"
+    },
+    {
+      "after": "PASS",
+      "before": "INCOMPLETE",
+      "case_id": "case-119493dec815",
+      "case_name": "sequential_approval",
+      "expected": "PASS",
+      "split": "development"
+    },
+    {
+      "after": "INCOMPLETE",
+      "before": "PASS",
+      "case_id": "case-1b7015d4e709",
+      "case_name": "required_model_truncation",
+      "expected": "INCOMPLETE",
+      "split": "development"
+    },
+    {
+      "after": "CHANGES_REQUIRED",
+      "before": "INCOMPLETE",
+      "case_id": "case-82be91b5c8b4",
+      "case_name": "exception_shadowed_by_urgency",
+      "expected": "CHANGES_REQUIRED",
+      "split": "held_out"
+    },
+    {
+      "after": "INCOMPLETE",
+      "before": "PASS",
+      "case_id": "case-b60aa9880d81",
+      "case_name": "required_model_timeout",
+      "expected": "INCOMPLETE",
+      "split": "development"
+    },
+    {
+      "after": "CHANGES_REQUIRED",
+      "before": "PASS",
+      "case_id": "case-be514acbdc02",
+      "case_name": "script_accepts_excluded_boundary",
+      "expected": "CHANGES_REQUIRED",
+      "split": "held_out"
+    },
+    {
+      "after": "INCOMPLETE",
+      "before": "PASS",
+      "case_id": "case-da9710217f73",
+      "case_name": "required_model_coverage_gap",
+      "expected": "INCOMPLETE",
+      "split": "held_out"
+    },
+    {
+      "after": "PASS",
+      "before": "CHANGES_REQUIRED",
+      "case_id": "case-dcca240b7636",
+      "case_name": "distributed_exception_and_native_seconds",
+      "expected": "PASS",
+      "split": "held_out"
+    },
+    {
+      "after": "INCOMPLETE",
+      "before": "PASS",
+      "case_id": "case-e0188439b58a",
+      "case_name": "invented_model_reference",
+      "expected": "INCOMPLETE",
+      "split": "held_out"
+    },
+    {
+      "after": "CHANGES_REQUIRED",
+      "before": "PASS",
+      "case_id": "case-ed56c690f33d",
+      "case_name": "linked_script_disagrees",
+      "expected": "CHANGES_REQUIRED",
+      "split": "development"
+    },
+    {
+      "after": "INCOMPLETE",
+      "before": "PASS",
+      "case_id": "case-f7dd9dd87577",
+      "case_name": "required_model_conflict",
+      "expected": "INCOMPLETE",
+      "split": "development"
+    }
+  ],
+  "metrics": {
+    "ablation-omit-boundaries": {
+      "all": {
+        "by_expected_case_type": {
+          "defective": {
+            "cases": 10,
+            "observed_status": {
+              "CHANGES_REQUIRED": 8,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 2
+            }
+          },
+          "requires_incomplete": {
+            "cases": 8,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 8,
+              "PASS": 0
+            }
+          },
+          "valid": {
+            "cases": 6,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 6
+            }
+          }
+        },
+        "cases": 24,
+        "coverage": {
+          "incompletes_disclosing_gaps": {
+            "count": 8,
+            "total": 8
+          },
+          "passes_covering_all_source_rules": {
+            "count": 8,
+            "total": 8
+          }
+        },
+        "exact_decisions": {
+          "count": 22,
+          "total": 24
+        },
+        "false_blocks": {
+          "count": 0,
+          "total": 6
+        },
+        "false_passes": {
+          "count": 2,
+          "total": 10
+        },
+        "findings": {
+          "counterexamples_provided": {
+            "count": 8,
+            "total": 11
+          },
+          "counterexamples_verified": {
+            "count": 8,
+            "total": 11
+          },
+          "located_supported_findings_with_verified_counterexample": {
+            "count": 6,
+            "total": 11
+          },
+          "required_targets_by_category": {
+            "defect": 13,
+            "scope": 3
+          },
+          "targets_correctly_located": {
+            "count": 10,
+            "total": 16
+          },
+          "targets_identified": {
+            "count": 12,
+            "total": 16
+          },
+          "targets_with_correction": {
+            "count": 12,
+            "total": 16
+          },
+          "targets_with_located_supported_finding": {
+            "count": 8,
+            "total": 16
+          },
+          "targets_with_supported_evidence": {
+            "count": 10,
+            "total": 16
+          },
+          "unsupported_reported_findings": {
+            "count": 3,
+            "total": 13
+          }
+        },
+        "incompletes_by_case_type": {
+          "defective": {
+            "count": 0,
+            "total": 10
+          },
+          "requires_incomplete": {
+            "count": 8,
+            "total": 8
+          },
+          "valid": {
+            "count": 0,
+            "total": 6
+          }
+        },
+        "observed_status": {
+          "CHANGES_REQUIRED": 8,
+          "ERROR": 0,
+          "INCOMPLETE": 8,
+          "PASS": 8
+        },
+        "passed_incomplete_cases": {
+          "count": 0,
+          "total": 8
+        },
+        "resources": {
+          "fake_requested": {
+            "cases": 6,
+            "fake_checks_exercised": 6,
+            "model_calls": 12,
+            "model_retries": 6,
+            "runtime_median_ms": 1.125,
+            "runtime_total_ms": 6.475,
+            "verified_fake_traces": 6
+          },
+          "no_model": {
+            "cases": 18,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.671,
+            "runtime_total_ms": 14.171,
+            "verified_fake_traces": 0
+          },
+          "real_model": {
+            "cases": 0,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": null,
+            "runtime_total_ms": 0,
+            "verified_fake_traces": 0
+          }
+        }
+      },
+      "development": {
+        "by_expected_case_type": {
+          "defective": {
+            "cases": 7,
+            "observed_status": {
+              "CHANGES_REQUIRED": 6,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 1
+            }
+          },
+          "requires_incomplete": {
+            "cases": 6,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 6,
+              "PASS": 0
+            }
+          },
+          "valid": {
+            "cases": 4,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 4
+            }
+          }
+        },
+        "cases": 17,
+        "coverage": {
+          "incompletes_disclosing_gaps": {
+            "count": 6,
+            "total": 6
+          },
+          "passes_covering_all_source_rules": {
+            "count": 5,
+            "total": 5
+          }
+        },
+        "exact_decisions": {
+          "count": 16,
+          "total": 17
+        },
+        "false_blocks": {
+          "count": 0,
+          "total": 4
+        },
+        "false_passes": {
+          "count": 1,
+          "total": 7
+        },
+        "findings": {
+          "counterexamples_provided": {
+            "count": 6,
+            "total": 8
+          },
+          "counterexamples_verified": {
+            "count": 6,
+            "total": 8
+          },
+          "located_supported_findings_with_verified_counterexample": {
+            "count": 5,
+            "total": 8
+          },
+          "required_targets_by_category": {
+            "defect": 10,
+            "scope": 3
+          },
+          "targets_correctly_located": {
+            "count": 9,
+            "total": 13
+          },
+          "targets_identified": {
+            "count": 10,
+            "total": 13
+          },
+          "targets_with_correction": {
+            "count": 10,
+            "total": 13
+          },
+          "targets_with_located_supported_finding": {
+            "count": 7,
+            "total": 13
+          },
+          "targets_with_supported_evidence": {
+            "count": 8,
+            "total": 13
+          },
+          "unsupported_reported_findings": {
+            "count": 3,
+            "total": 11
+          }
+        },
+        "incompletes_by_case_type": {
+          "defective": {
+            "count": 0,
+            "total": 7
+          },
+          "requires_incomplete": {
+            "count": 6,
+            "total": 6
+          },
+          "valid": {
+            "count": 0,
+            "total": 4
+          }
+        },
+        "observed_status": {
+          "CHANGES_REQUIRED": 6,
+          "ERROR": 0,
+          "INCOMPLETE": 6,
+          "PASS": 5
+        },
+        "passed_incomplete_cases": {
+          "count": 0,
+          "total": 6
+        },
+        "resources": {
+          "fake_requested": {
+            "cases": 4,
+            "fake_checks_exercised": 4,
+            "model_calls": 8,
+            "model_retries": 4,
+            "runtime_median_ms": 1.045,
+            "runtime_total_ms": 4.217,
+            "verified_fake_traces": 4
+          },
+          "no_model": {
+            "cases": 13,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.665,
+            "runtime_total_ms": 8.709,
+            "verified_fake_traces": 0
+          },
+          "real_model": {
+            "cases": 0,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": null,
+            "runtime_total_ms": 0,
+            "verified_fake_traces": 0
+          }
+        }
+      },
+      "held_out": {
+        "by_expected_case_type": {
+          "defective": {
+            "cases": 3,
+            "observed_status": {
+              "CHANGES_REQUIRED": 2,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 1
+            }
+          },
+          "requires_incomplete": {
+            "cases": 2,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 2,
+              "PASS": 0
+            }
+          },
+          "valid": {
+            "cases": 2,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 2
+            }
+          }
+        },
+        "cases": 7,
+        "coverage": {
+          "incompletes_disclosing_gaps": {
+            "count": 2,
+            "total": 2
+          },
+          "passes_covering_all_source_rules": {
+            "count": 3,
+            "total": 3
+          }
+        },
+        "exact_decisions": {
+          "count": 6,
+          "total": 7
+        },
+        "false_blocks": {
+          "count": 0,
+          "total": 2
+        },
+        "false_passes": {
+          "count": 1,
+          "total": 3
+        },
+        "findings": {
+          "counterexamples_provided": {
+            "count": 2,
+            "total": 3
+          },
+          "counterexamples_verified": {
+            "count": 2,
+            "total": 3
+          },
+          "located_supported_findings_with_verified_counterexample": {
+            "count": 1,
+            "total": 3
+          },
+          "required_targets_by_category": {
+            "defect": 3
+          },
+          "targets_correctly_located": {
+            "count": 1,
+            "total": 3
+          },
+          "targets_identified": {
+            "count": 2,
+            "total": 3
+          },
+          "targets_with_correction": {
+            "count": 2,
+            "total": 3
+          },
+          "targets_with_located_supported_finding": {
+            "count": 1,
+            "total": 3
+          },
+          "targets_with_supported_evidence": {
+            "count": 2,
+            "total": 3
+          },
+          "unsupported_reported_findings": {
+            "count": 0,
+            "total": 2
+          }
+        },
+        "incompletes_by_case_type": {
+          "defective": {
+            "count": 0,
+            "total": 3
+          },
+          "requires_incomplete": {
+            "count": 2,
+            "total": 2
+          },
+          "valid": {
+            "count": 0,
+            "total": 2
+          }
+        },
+        "observed_status": {
+          "CHANGES_REQUIRED": 2,
+          "ERROR": 0,
+          "INCOMPLETE": 2,
+          "PASS": 3
+        },
+        "passed_incomplete_cases": {
+          "count": 0,
+          "total": 2
+        },
+        "resources": {
+          "fake_requested": {
+            "cases": 2,
+            "fake_checks_exercised": 2,
+            "model_calls": 4,
+            "model_retries": 2,
+            "runtime_median_ms": 1.129,
+            "runtime_total_ms": 2.258,
+            "verified_fake_traces": 2
+          },
+          "no_model": {
+            "cases": 5,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.77,
+            "runtime_total_ms": 5.462,
+            "verified_fake_traces": 0
+          },
+          "real_model": {
+            "cases": 0,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": null,
+            "runtime_total_ms": 0,
+            "verified_fake_traces": 0
+          }
+        }
+      }
+    },
+    "baseline": {
+      "all": {
+        "by_expected_case_type": {
+          "defective": {
+            "cases": 10,
+            "observed_status": {
+              "CHANGES_REQUIRED": 7,
+              "ERROR": 0,
+              "INCOMPLETE": 1,
+              "PASS": 2
+            }
+          },
+          "requires_incomplete": {
+            "cases": 8,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 2,
+              "PASS": 6
+            }
+          },
+          "valid": {
+            "cases": 6,
+            "observed_status": {
+              "CHANGES_REQUIRED": 1,
+              "ERROR": 0,
+              "INCOMPLETE": 1,
+              "PASS": 4
+            }
+          }
+        },
+        "cases": 24,
+        "coverage": {
+          "incompletes_disclosing_gaps": {
+            "count": 4,
+            "total": 4
+          },
+          "passes_covering_all_source_rules": {
+            "count": 12,
+            "total": 12
+          }
+        },
+        "exact_decisions": {
+          "count": 13,
+          "total": 24
+        },
+        "false_blocks": {
+          "count": 1,
+          "total": 6
+        },
+        "false_passes": {
+          "count": 2,
+          "total": 10
+        },
+        "findings": {
+          "counterexamples_provided": {
+            "count": 0,
+            "total": 11
+          },
+          "counterexamples_verified": {
+            "count": 0,
+            "total": 11
+          },
+          "located_supported_findings_with_verified_counterexample": {
+            "count": 0,
+            "total": 11
+          },
+          "required_targets_by_category": {
+            "defect": 13,
+            "scope": 3
+          },
+          "targets_correctly_located": {
+            "count": 10,
+            "total": 16
+          },
+          "targets_identified": {
+            "count": 11,
+            "total": 16
+          },
+          "targets_with_correction": {
+            "count": 11,
+            "total": 16
+          },
+          "targets_with_located_supported_finding": {
+            "count": 10,
+            "total": 16
+          },
+          "targets_with_supported_evidence": {
+            "count": 10,
+            "total": 16
+          },
+          "unsupported_reported_findings": {
+            "count": 3,
+            "total": 18
+          }
+        },
+        "incompletes_by_case_type": {
+          "defective": {
+            "count": 1,
+            "total": 10
+          },
+          "requires_incomplete": {
+            "count": 2,
+            "total": 8
+          },
+          "valid": {
+            "count": 1,
+            "total": 6
+          }
+        },
+        "observed_status": {
+          "CHANGES_REQUIRED": 8,
+          "ERROR": 0,
+          "INCOMPLETE": 4,
+          "PASS": 12
+        },
+        "passed_incomplete_cases": {
+          "count": 6,
+          "total": 8
+        },
+        "resources": {
+          "fake_requested": {
+            "cases": 6,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.048,
+            "runtime_total_ms": 0.291,
+            "verified_fake_traces": 0
+          },
+          "no_model": {
+            "cases": 18,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.05,
+            "runtime_total_ms": 0.965,
+            "verified_fake_traces": 0
+          },
+          "real_model": {
+            "cases": 0,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": null,
+            "runtime_total_ms": 0,
+            "verified_fake_traces": 0
+          }
+        }
+      },
+      "development": {
+        "by_expected_case_type": {
+          "defective": {
+            "cases": 7,
+            "observed_status": {
+              "CHANGES_REQUIRED": 6,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 1
+            }
+          },
+          "requires_incomplete": {
+            "cases": 6,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 2,
+              "PASS": 4
+            }
+          },
+          "valid": {
+            "cases": 4,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 1,
+              "PASS": 3
+            }
+          }
+        },
+        "cases": 17,
+        "coverage": {
+          "incompletes_disclosing_gaps": {
+            "count": 3,
+            "total": 3
+          },
+          "passes_covering_all_source_rules": {
+            "count": 8,
+            "total": 8
+          }
+        },
+        "exact_decisions": {
+          "count": 11,
+          "total": 17
+        },
+        "false_blocks": {
+          "count": 0,
+          "total": 4
+        },
+        "false_passes": {
+          "count": 1,
+          "total": 7
+        },
+        "findings": {
+          "counterexamples_provided": {
+            "count": 0,
+            "total": 8
+          },
+          "counterexamples_verified": {
+            "count": 0,
+            "total": 8
+          },
+          "located_supported_findings_with_verified_counterexample": {
+            "count": 0,
+            "total": 8
+          },
+          "required_targets_by_category": {
+            "defect": 10,
+            "scope": 3
+          },
+          "targets_correctly_located": {
+            "count": 9,
+            "total": 13
+          },
+          "targets_identified": {
+            "count": 10,
+            "total": 13
+          },
+          "targets_with_correction": {
+            "count": 10,
+            "total": 13
+          },
+          "targets_with_located_supported_finding": {
+            "count": 9,
+            "total": 13
+          },
+          "targets_with_supported_evidence": {
+            "count": 9,
+            "total": 13
+          },
+          "unsupported_reported_findings": {
+            "count": 2,
+            "total": 14
+          }
+        },
+        "incompletes_by_case_type": {
+          "defective": {
+            "count": 0,
+            "total": 7
+          },
+          "requires_incomplete": {
+            "count": 2,
+            "total": 6
+          },
+          "valid": {
+            "count": 1,
+            "total": 4
+          }
+        },
+        "observed_status": {
+          "CHANGES_REQUIRED": 6,
+          "ERROR": 0,
+          "INCOMPLETE": 3,
+          "PASS": 8
+        },
+        "passed_incomplete_cases": {
+          "count": 4,
+          "total": 6
+        },
+        "resources": {
+          "fake_requested": {
+            "cases": 4,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.047,
+            "runtime_total_ms": 0.196,
+            "verified_fake_traces": 0
+          },
+          "no_model": {
+            "cases": 13,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.05,
+            "runtime_total_ms": 0.714,
+            "verified_fake_traces": 0
+          },
+          "real_model": {
+            "cases": 0,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": null,
+            "runtime_total_ms": 0,
+            "verified_fake_traces": 0
+          }
+        }
+      },
+      "held_out": {
+        "by_expected_case_type": {
+          "defective": {
+            "cases": 3,
+            "observed_status": {
+              "CHANGES_REQUIRED": 1,
+              "ERROR": 0,
+              "INCOMPLETE": 1,
+              "PASS": 1
+            }
+          },
+          "requires_incomplete": {
+            "cases": 2,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 2
+            }
+          },
+          "valid": {
+            "cases": 2,
+            "observed_status": {
+              "CHANGES_REQUIRED": 1,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 1
+            }
+          }
+        },
+        "cases": 7,
+        "coverage": {
+          "incompletes_disclosing_gaps": {
+            "count": 1,
+            "total": 1
+          },
+          "passes_covering_all_source_rules": {
+            "count": 4,
+            "total": 4
+          }
+        },
+        "exact_decisions": {
+          "count": 2,
+          "total": 7
+        },
+        "false_blocks": {
+          "count": 1,
+          "total": 2
+        },
+        "false_passes": {
+          "count": 1,
+          "total": 3
+        },
+        "findings": {
+          "counterexamples_provided": {
+            "count": 0,
+            "total": 3
+          },
+          "counterexamples_verified": {
+            "count": 0,
+            "total": 3
+          },
+          "located_supported_findings_with_verified_counterexample": {
+            "count": 0,
+            "total": 3
+          },
+          "required_targets_by_category": {
+            "defect": 3
+          },
+          "targets_correctly_located": {
+            "count": 1,
+            "total": 3
+          },
+          "targets_identified": {
+            "count": 1,
+            "total": 3
+          },
+          "targets_with_correction": {
+            "count": 1,
+            "total": 3
+          },
+          "targets_with_located_supported_finding": {
+            "count": 1,
+            "total": 3
+          },
+          "targets_with_supported_evidence": {
+            "count": 1,
+            "total": 3
+          },
+          "unsupported_reported_findings": {
+            "count": 1,
+            "total": 4
+          }
+        },
+        "incompletes_by_case_type": {
+          "defective": {
+            "count": 1,
+            "total": 3
+          },
+          "requires_incomplete": {
+            "count": 0,
+            "total": 2
+          },
+          "valid": {
+            "count": 0,
+            "total": 2
+          }
+        },
+        "observed_status": {
+          "CHANGES_REQUIRED": 2,
+          "ERROR": 0,
+          "INCOMPLETE": 1,
+          "PASS": 4
+        },
+        "passed_incomplete_cases": {
+          "count": 2,
+          "total": 2
+        },
+        "resources": {
+          "fake_requested": {
+            "cases": 2,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.048,
+            "runtime_total_ms": 0.095,
+            "verified_fake_traces": 0
+          },
+          "no_model": {
+            "cases": 5,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.05,
+            "runtime_total_ms": 0.252,
+            "verified_fake_traces": 0
+          },
+          "real_model": {
+            "cases": 0,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": null,
+            "runtime_total_ms": 0,
+            "verified_fake_traces": 0
+          }
+        }
+      }
+    },
+    "final": {
+      "all": {
+        "by_expected_case_type": {
+          "defective": {
+            "cases": 10,
+            "observed_status": {
+              "CHANGES_REQUIRED": 10,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 0
+            }
+          },
+          "requires_incomplete": {
+            "cases": 8,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 8,
+              "PASS": 0
+            }
+          },
+          "valid": {
+            "cases": 6,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 6
+            }
+          }
+        },
+        "cases": 24,
+        "coverage": {
+          "incompletes_disclosing_gaps": {
+            "count": 8,
+            "total": 8
+          },
+          "passes_covering_all_source_rules": {
+            "count": 6,
+            "total": 6
+          }
+        },
+        "exact_decisions": {
+          "count": 24,
+          "total": 24
+        },
+        "false_blocks": {
+          "count": 0,
+          "total": 6
+        },
+        "false_passes": {
+          "count": 0,
+          "total": 10
+        },
+        "findings": {
+          "counterexamples_provided": {
+            "count": 11,
+            "total": 11
+          },
+          "counterexamples_verified": {
+            "count": 11,
+            "total": 11
+          },
+          "located_supported_findings_with_verified_counterexample": {
+            "count": 9,
+            "total": 11
+          },
+          "required_targets_by_category": {
+            "defect": 13,
+            "scope": 3
+          },
+          "targets_correctly_located": {
+            "count": 13,
+            "total": 16
+          },
+          "targets_identified": {
+            "count": 15,
+            "total": 16
+          },
+          "targets_with_correction": {
+            "count": 15,
+            "total": 16
+          },
+          "targets_with_located_supported_finding": {
+            "count": 11,
+            "total": 16
+          },
+          "targets_with_supported_evidence": {
+            "count": 13,
+            "total": 16
+          },
+          "unsupported_reported_findings": {
+            "count": 3,
+            "total": 16
+          }
+        },
+        "incompletes_by_case_type": {
+          "defective": {
+            "count": 0,
+            "total": 10
+          },
+          "requires_incomplete": {
+            "count": 8,
+            "total": 8
+          },
+          "valid": {
+            "count": 0,
+            "total": 6
+          }
+        },
+        "observed_status": {
+          "CHANGES_REQUIRED": 10,
+          "ERROR": 0,
+          "INCOMPLETE": 8,
+          "PASS": 6
+        },
+        "passed_incomplete_cases": {
+          "count": 0,
+          "total": 8
+        },
+        "resources": {
+          "fake_requested": {
+            "cases": 6,
+            "fake_checks_exercised": 6,
+            "model_calls": 12,
+            "model_retries": 6,
+            "runtime_median_ms": 1.167,
+            "runtime_total_ms": 6.803,
+            "verified_fake_traces": 6
+          },
+          "no_model": {
+            "cases": 18,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.751,
+            "runtime_total_ms": 16.366,
+            "verified_fake_traces": 0
+          },
+          "real_model": {
+            "cases": 0,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": null,
+            "runtime_total_ms": 0,
+            "verified_fake_traces": 0
+          }
+        }
+      },
+      "development": {
+        "by_expected_case_type": {
+          "defective": {
+            "cases": 7,
+            "observed_status": {
+              "CHANGES_REQUIRED": 7,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 0
+            }
+          },
+          "requires_incomplete": {
+            "cases": 6,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 6,
+              "PASS": 0
+            }
+          },
+          "valid": {
+            "cases": 4,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 4
+            }
+          }
+        },
+        "cases": 17,
+        "coverage": {
+          "incompletes_disclosing_gaps": {
+            "count": 6,
+            "total": 6
+          },
+          "passes_covering_all_source_rules": {
+            "count": 4,
+            "total": 4
+          }
+        },
+        "exact_decisions": {
+          "count": 17,
+          "total": 17
+        },
+        "false_blocks": {
+          "count": 0,
+          "total": 4
+        },
+        "false_passes": {
+          "count": 0,
+          "total": 7
+        },
+        "findings": {
+          "counterexamples_provided": {
+            "count": 8,
+            "total": 8
+          },
+          "counterexamples_verified": {
+            "count": 8,
+            "total": 8
+          },
+          "located_supported_findings_with_verified_counterexample": {
+            "count": 7,
+            "total": 8
+          },
+          "required_targets_by_category": {
+            "defect": 10,
+            "scope": 3
+          },
+          "targets_correctly_located": {
+            "count": 11,
+            "total": 13
+          },
+          "targets_identified": {
+            "count": 12,
+            "total": 13
+          },
+          "targets_with_correction": {
+            "count": 12,
+            "total": 13
+          },
+          "targets_with_located_supported_finding": {
+            "count": 9,
+            "total": 13
+          },
+          "targets_with_supported_evidence": {
+            "count": 10,
+            "total": 13
+          },
+          "unsupported_reported_findings": {
+            "count": 3,
+            "total": 13
+          }
+        },
+        "incompletes_by_case_type": {
+          "defective": {
+            "count": 0,
+            "total": 7
+          },
+          "requires_incomplete": {
+            "count": 6,
+            "total": 6
+          },
+          "valid": {
+            "count": 0,
+            "total": 4
+          }
+        },
+        "observed_status": {
+          "CHANGES_REQUIRED": 7,
+          "ERROR": 0,
+          "INCOMPLETE": 6,
+          "PASS": 4
+        },
+        "passed_incomplete_cases": {
+          "count": 0,
+          "total": 6
+        },
+        "resources": {
+          "fake_requested": {
+            "cases": 4,
+            "fake_checks_exercised": 4,
+            "model_calls": 8,
+            "model_retries": 4,
+            "runtime_median_ms": 1.133,
+            "runtime_total_ms": 4.465,
+            "verified_fake_traces": 4
+          },
+          "no_model": {
+            "cases": 13,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.734,
+            "runtime_total_ms": 10.234,
+            "verified_fake_traces": 0
+          },
+          "real_model": {
+            "cases": 0,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": null,
+            "runtime_total_ms": 0,
+            "verified_fake_traces": 0
+          }
+        }
+      },
+      "held_out": {
+        "by_expected_case_type": {
+          "defective": {
+            "cases": 3,
+            "observed_status": {
+              "CHANGES_REQUIRED": 3,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 0
+            }
+          },
+          "requires_incomplete": {
+            "cases": 2,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 2,
+              "PASS": 0
+            }
+          },
+          "valid": {
+            "cases": 2,
+            "observed_status": {
+              "CHANGES_REQUIRED": 0,
+              "ERROR": 0,
+              "INCOMPLETE": 0,
+              "PASS": 2
+            }
+          }
+        },
+        "cases": 7,
+        "coverage": {
+          "incompletes_disclosing_gaps": {
+            "count": 2,
+            "total": 2
+          },
+          "passes_covering_all_source_rules": {
+            "count": 2,
+            "total": 2
+          }
+        },
+        "exact_decisions": {
+          "count": 7,
+          "total": 7
+        },
+        "false_blocks": {
+          "count": 0,
+          "total": 2
+        },
+        "false_passes": {
+          "count": 0,
+          "total": 3
+        },
+        "findings": {
+          "counterexamples_provided": {
+            "count": 3,
+            "total": 3
+          },
+          "counterexamples_verified": {
+            "count": 3,
+            "total": 3
+          },
+          "located_supported_findings_with_verified_counterexample": {
+            "count": 2,
+            "total": 3
+          },
+          "required_targets_by_category": {
+            "defect": 3
+          },
+          "targets_correctly_located": {
+            "count": 2,
+            "total": 3
+          },
+          "targets_identified": {
+            "count": 3,
+            "total": 3
+          },
+          "targets_with_correction": {
+            "count": 3,
+            "total": 3
+          },
+          "targets_with_located_supported_finding": {
+            "count": 2,
+            "total": 3
+          },
+          "targets_with_supported_evidence": {
+            "count": 3,
+            "total": 3
+          },
+          "unsupported_reported_findings": {
+            "count": 0,
+            "total": 3
+          }
+        },
+        "incompletes_by_case_type": {
+          "defective": {
+            "count": 0,
+            "total": 3
+          },
+          "requires_incomplete": {
+            "count": 2,
+            "total": 2
+          },
+          "valid": {
+            "count": 0,
+            "total": 2
+          }
+        },
+        "observed_status": {
+          "CHANGES_REQUIRED": 3,
+          "ERROR": 0,
+          "INCOMPLETE": 2,
+          "PASS": 2
+        },
+        "passed_incomplete_cases": {
+          "count": 0,
+          "total": 2
+        },
+        "resources": {
+          "fake_requested": {
+            "cases": 2,
+            "fake_checks_exercised": 2,
+            "model_calls": 4,
+            "model_retries": 2,
+            "runtime_median_ms": 1.169,
+            "runtime_total_ms": 2.337,
+            "verified_fake_traces": 2
+          },
+          "no_model": {
+            "cases": 5,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": 0.82,
+            "runtime_total_ms": 6.131,
+            "verified_fake_traces": 0
+          },
+          "real_model": {
+            "cases": 0,
+            "fake_checks_exercised": 0,
+            "model_calls": 0,
+            "model_retries": 0,
+            "runtime_median_ms": null,
+            "runtime_total_ms": 0,
+            "verified_fake_traces": 0
+          }
+        }
+      }
+    }
+  },
+  "paired_cases": {
+    "waiting_boundary": {
+      "ablation-omit-boundaries": {
+        "behavior_change": {
+          "actual_status": "PASS",
+          "case_id": "case-5bcde7f20ec9",
+          "expected_status": "CHANGES_REQUIRED"
+        },
+        "reference": {
+          "actual_status": "PASS",
+          "case_id": "case-44bac949132f",
+          "expected_status": "PASS"
+        },
+        "representation_only": {
+          "actual_status": "PASS",
+          "case_id": "case-d0663a750d6d",
+          "expected_status": "PASS"
+        }
+      },
+      "baseline": {
+        "behavior_change": {
+          "actual_status": "CHANGES_REQUIRED",
+          "case_id": "case-5bcde7f20ec9",
+          "expected_status": "CHANGES_REQUIRED"
+        },
+        "reference": {
+          "actual_status": "PASS",
+          "case_id": "case-44bac949132f",
+          "expected_status": "PASS"
+        },
+        "representation_only": {
+          "actual_status": "PASS",
+          "case_id": "case-d0663a750d6d",
+          "expected_status": "PASS"
+        }
+      },
+      "final": {
+        "behavior_change": {
+          "actual_status": "CHANGES_REQUIRED",
+          "case_id": "case-5bcde7f20ec9",
+          "expected_status": "CHANGES_REQUIRED"
+        },
+        "reference": {
+          "actual_status": "PASS",
+          "case_id": "case-44bac949132f",
+          "expected_status": "PASS"
+        },
+        "representation_only": {
+          "actual_status": "PASS",
+          "case_id": "case-d0663a750d6d",
+          "expected_status": "PASS"
+        }
+      }
+    }
+  },
+  "provenance": {
+    "baseline_commit": "208ffb67350cddcdcbcbe1cc91cfcd2dcea67735",
+    "dataset_manifest_sha256": "b09d68a37bca9de36ad20cb39daa63abc55de195962fc36cb72d273869f4cd3b",
+    "evaluator_source_sha256": {
+      "evaluation/freeze.py": "a3d58d2d3b06eba9d487a83fca941f0cd4d164de0e7bfae0a6c58db2b4f53f7b",
+      "evaluation/run.py": "3078a60f9224bd52ca5eb57da580b62ccd81a92295b84edd9da114177636c2a3",
+      "evaluation/scoring.py": "b71199dd8a4b3a6358dc0d34d24da1917d28c1c155c210022e97e1be1a0e0337"
+    },
+    "final_commit": "1bd3e2280e49ceff2bd082650a2c6b3a5552e87a",
+    "implementation_manifest_sha256": "cf3a9c96e74d80dfbf0ef56a1d1122e956a327c1086300f42e09cdc6c5afb156",
+    "platform": "Darwin-arm64",
+    "python": "3.14.3",
+    "real_model_performance_measured": false,
+    "seed": 351722,
+    "split": "all"
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "approvals": {
+    "records": [],
+    "version": "approvals-v1"
+  },
+  "fields": {
+    "category": {
+      "nullable": true,
+      "type": "string"
+    },
+    "urgent": {
+      "type": "boolean"
+    },
+    "waiting": {
+      "nullable": true,
+      "type": "number",
+      "unit": "minutes"
+    }
+  },
+  "requirements": {
+    "rules": [
+      {
+        "id": "ref_c40a8269b123",
+        "location": "policy#ref_c40a8269b123",
+        "order": 40,
+        "text": "OTHERWISE THEN normal"
+      },
+      {
+        "id": "ref_646c09611b4c",
+        "location": "policy#ref_646c09611b4c",
+        "order": 30,
+        "text": "IF waiting >= 18 minutes THEN escalation"
+      },
+      {
+        "id": "ref_2077f3a6f5f0",
+        "location": "policy#ref_2077f3a6f5f0",
+        "order": 20,
+        "text": "IF urgent == true THEN priority"
+      },
+      {
+        "id": "ref_4b6513480f5e",
+        "location": "policy#ref_4b6513480f5e",
+        "order": 10,
+        "text": "IF category IS MISSING THEN manual"
+      }
+    ],
+    "version": "policy-v1"
+  },
+  "revision": "rev1",
+  "schema_version": "1.0",
+  "snippets": {
+    "items": [
+      {
+        "id": "ref_db1302b849f3",
+        "source": "def decide(ticket):\n    return ticket.get(\"urgent\") == True\n"
+      },
+      {
+        "id": "ref_c84d8f014f22",
+        "source": "def decide(ticket):\n    return ticket.get(\"category\") is None\n"
+      },
+      {
+        "id": "ref_c4ff516c9065",
+        "source": "def decide(ticket):\n    return ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 18\n"
+      }
+    ],
+    "version": "py-v1"
+  },
+  "specification": {
+    "rules": [
+      {
+        "id": "ref_39e330c4701b",
+        "order": 10,
+        "route": "manual",
+        "rule_id": "ref_4b6513480f5e",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "id": "ref_08f6b452ee60",
+        "order": 30,
+        "route": "escalation",
+        "rule_id": "ref_646c09611b4c",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 18
+        }
+      },
+      {
+        "id": "ref_b3ff4c5530b0",
+        "order": 20,
+        "route": "priority",
+        "rule_id": "ref_2077f3a6f5f0",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "id": "ref_6e607ea2c8c5",
+        "order": 40,
+        "route": "normal",
+        "rule_id": "ref_c40a8269b123",
+        "when": true
+      }
+    ],
+    "version": "spec-v1"
+  },
+  "workflow": {
+    "entry": "ref_dc7c441f41a6",
+    "nodes": [
+      {
+        "id": "ref_fcd42b20473b",
+        "kind": "route",
+        "route": "priority"
+      },
+      {
+        "false": "ref_753492638294",
+        "id": "ref_dc7c441f41a6",
+        "kind": "decision",
+        "rule_id": "ref_4b6513480f5e",
+        "snippet_id": "ref_c84d8f014f22",
+        "true": "ref_548b8086f243",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "id": "ref_81354639a891",
+        "kind": "route",
+        "route": "normal"
+      },
+      {
+        "false": "ref_bdc254a42431",
+        "id": "ref_753492638294",
+        "kind": "decision",
+        "rule_id": "ref_2077f3a6f5f0",
+        "snippet_id": "ref_db1302b849f3",
+        "true": "ref_fcd42b20473b",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "id": "ref_548b8086f243",
+        "kind": "route",
+        "route": "manual"
+      },
+      {
+        "false": "ref_81354639a891",
+        "id": "ref_bdc254a42431",
+        "kind": "decision",
+        "rule_id": "ref_646c09611b4c",
+        "snippet_id": "ref_c4ff516c9065",
+        "true": "ref_3fb4de1b71c5",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 18
+        }
+      },
+      {
+        "id": "ref_3fb4de1b71c5",
+        "kind": "route",
+        "route": "escalation"
+      }
+    ],
+    "version": "graph-v1"
+  }
+}

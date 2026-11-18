@@ -1,0 +1,2533 @@
+{
+  "provenance": {
+    "baseline_commit": "208ffb67350cddcdcbcbe1cc91cfcd2dcea67735",
+    "dataset_manifest_sha256": "b09d68a37bca9de36ad20cb39daa63abc55de195962fc36cb72d273869f4cd3b",
+    "evaluator_source_sha256": {
+      "evaluation/freeze.py": "a3d58d2d3b06eba9d487a83fca941f0cd4d164de0e7bfae0a6c58db2b4f53f7b",
+      "evaluation/run.py": "3078a60f9224bd52ca5eb57da580b62ccd81a92295b84edd9da114177636c2a3",
+      "evaluation/scoring.py": "b71199dd8a4b3a6358dc0d34d24da1917d28c1c155c210022e97e1be1a0e0337"
+    },
+    "final_commit": "1bd3e2280e49ceff2bd082650a2c6b3a5552e87a",
+    "implementation_manifest_sha256": "cf3a9c96e74d80dfbf0ef56a1d1122e956a327c1086300f42e09cdc6c5afb156",
+    "platform": "Darwin-arm64",
+    "python": "3.14.3",
+    "real_model_performance_measured": false,
+    "seed": 351722,
+    "split": "all"
+  },
+  "results": [
+    {
+      "actual_status": "PASS",
+      "case_id": "case-0d8ff631e84e",
+      "case_name": "unsupported_script_call",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "INCOMPLETE",
+      "quality": {
+        "findings": [],
+        "targets": [
+          {
+            "backed_finding": false,
+            "category": "scope",
+            "correct_location": false,
+            "correction_provided": false,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": false,
+            "required": true,
+            "supported_evidence": false,
+            "target": "unsupported_script",
+            "witness_eligible": false
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.131875
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "INCOMPLETE",
+      "case_id": "case-119493dec815",
+      "case_name": "sequential_approval",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 1,
+        "reviewed_source_rules": 3,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "PASS",
+      "quality": {
+        "findings": [
+          {
+            "code": "unreviewed_requirement",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": null,
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": false,
+                "target": "checkpoint_approval_scope"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "R3",
+            "severity": "warning",
+            "supported": false
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": false,
+            "category": "scope",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": false,
+            "supported_evidence": false,
+            "target": "checkpoint_approval_scope",
+            "witness_eligible": false
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "unreviewed"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "requirements",
+            "code": "unreviewed_requirement",
+            "correction": "Review this requirement with explicit approval and predicate semantics.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"IF waiting >= 30 minutes THEN escalation\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              }
+            ],
+            "location": "policy#R3",
+            "message": "The checkpoint cannot order multiple applicable approvals",
+            "rule_id": "R3",
+            "severity": "warning",
+            "version": "policy-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "INCOMPLETE",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.057292
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "PASS",
+      "case_id": "case-1b7015d4e709",
+      "case_name": "required_model_truncation",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "INCOMPLETE",
+      "quality": {
+        "findings": [],
+        "targets": []
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "fake_requested",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "required",
+        "runtime_ms": 0.057209
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "CHANGES_REQUIRED",
+      "case_id": "case-31b2a185f046",
+      "case_name": "missing_workflow_branch",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 3,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "CHANGES_REQUIRED",
+      "quality": {
+        "findings": [
+          {
+            "code": "workflow_destination",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": null,
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "missing_true_branch"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "R3",
+            "severity": "blocker",
+            "supported": true
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": true,
+            "category": "defect",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": true,
+            "supported_evidence": true,
+            "target": "missing_true_branch",
+            "witness_eligible": false
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "CHANGES_REQUIRED"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "changed"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "workflow",
+            "code": "workflow_destination",
+            "correction": "Link this branch to the route named by the source requirement.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"IF waiting >= 30 minutes THEN escalation\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "workflow",
+                "excerpt": "{\"false\": \"to_normal\", \"id\": \"n_wait\", \"kind\": \"decision\", \"rule_id\": \"R3\", \"snippet_id\": \"p_wait\", \"when\": {\"field\": \"waiting\", \"op\": \">=\", \"unit\": \"minutes\", \"value\": 30}}",
+                "location": "/workflow/nodes/2",
+                "version": "graph-v1"
+              }
+            ],
+            "location": "/workflow/nodes/2",
+            "message": "The workflow does not reach the expected route on this branch.",
+            "rule_id": "R3",
+            "severity": "blocker",
+            "version": "graph-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "CHANGES_REQUIRED",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.050792
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "PASS",
+      "case_id": "case-44bac949132f",
+      "case_name": "ordered_reference",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "PASS",
+      "quality": {
+        "findings": [],
+        "targets": []
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.049709
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "PASS",
+      "case_id": "case-483449eef400",
+      "case_name": "approval_scope_on_two_axes",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "PASS",
+      "quality": {
+        "findings": [],
+        "targets": []
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "ref_ed5b295d1076",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_bae6523f92ae",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_923ca310927c",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_a3d891b96c21",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.054291
+      },
+      "split": "held_out"
+    },
+    {
+      "actual_status": "CHANGES_REQUIRED",
+      "case_id": "case-4bfdfab73994",
+      "case_name": "missing_spec_requirement",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 3,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "CHANGES_REQUIRED",
+      "quality": {
+        "findings": [
+          {
+            "code": "missing_requirement",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": null,
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "source_anchored_omission"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "R3",
+            "severity": "blocker",
+            "supported": true
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": true,
+            "category": "defect",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": true,
+            "supported_evidence": true,
+            "target": "source_anchored_omission",
+            "witness_eligible": false
+          },
+          {
+            "backed_finding": false,
+            "category": "defect",
+            "correct_location": false,
+            "correction_provided": false,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": false,
+            "required": true,
+            "supported_evidence": false,
+            "target": "omission_route_consequence",
+            "witness_eligible": true
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "CHANGES_REQUIRED"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "changed"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "requirements",
+            "code": "missing_requirement",
+            "correction": "Add a specification rule for this source requirement.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"IF waiting >= 30 minutes THEN escalation\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              }
+            ],
+            "location": "policy#R3",
+            "message": "An anchored requirement has no specification rule.",
+            "rule_id": "R3",
+            "severity": "blocker",
+            "version": "policy-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "CHANGES_REQUIRED",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.044125
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "CHANGES_REQUIRED",
+      "case_id": "case-5bcde7f20ec9",
+      "case_name": "inclusive_boundary_lost",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 3,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "CHANGES_REQUIRED",
+      "quality": {
+        "findings": [
+          {
+            "code": "spec_mismatch",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": "absent",
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "specification_route"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "R3",
+            "severity": "blocker",
+            "supported": true
+          },
+          {
+            "code": "workflow_predicate",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": "absent",
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "workflow_route"
+              }
+            ],
+            "ordinal": 2,
+            "rule_id": "R3",
+            "severity": "blocker",
+            "supported": true
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": true,
+            "category": "defect",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": true,
+            "supported_evidence": true,
+            "target": "specification_route",
+            "witness_eligible": true
+          },
+          {
+            "backed_finding": true,
+            "category": "defect",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": true,
+            "supported_evidence": true,
+            "target": "workflow_route",
+            "witness_eligible": true
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "CHANGES_REQUIRED"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "changed"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "specification",
+            "code": "spec_mismatch",
+            "correction": "Align the specification predicate and route to the effective requirement.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"IF waiting >= 30 minutes THEN escalation\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "specification",
+                "excerpt": "{\"id\": \"s_wait\", \"order\": 30, \"route\": \"escalation\", \"rule_id\": \"R3\", \"when\": {\"field\": \"waiting\", \"op\": \">\", \"unit\": \"minutes\", \"value\": 30}}",
+                "location": "/specification/rules/2",
+                "version": "spec-v1"
+              }
+            ],
+            "location": "/specification/rules/2",
+            "message": "The specification differs from the written predicate or route.",
+            "rule_id": "R3",
+            "severity": "blocker",
+            "version": "spec-v1"
+          },
+          {
+            "artifact": "workflow",
+            "code": "workflow_predicate",
+            "correction": "Place the effective decision at this point of the workflow.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"IF waiting >= 30 minutes THEN escalation\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "workflow",
+                "excerpt": "{\"false\": \"to_normal\", \"id\": \"n_wait\", \"kind\": \"decision\", \"rule_id\": \"R3\", \"snippet_id\": \"p_wait\", \"true\": \"to_escalation\", \"when\": {\"field\": \"waiting\", \"op\": \">\", \"unit\": \"minutes\", \"value\": 30}}",
+                "location": "/workflow/nodes/2",
+                "version": "graph-v1"
+              }
+            ],
+            "location": "/workflow/nodes/2",
+            "message": "The ordered workflow predicate differs from the effective requirement.",
+            "rule_id": "R3",
+            "severity": "blocker",
+            "version": "graph-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "CHANGES_REQUIRED",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.054584
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "INCOMPLETE",
+      "case_id": "case-82be91b5c8b4",
+      "case_name": "exception_shadowed_by_urgency",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 1,
+        "reviewed_source_rules": 4,
+        "source_rules": 5
+      },
+      "error": null,
+      "expected_status": "CHANGES_REQUIRED",
+      "quality": {
+        "findings": [
+          {
+            "code": "unreviewed_requirement",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": null,
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "checkpoint_source_scope"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "ref_25a7d12768e5",
+            "severity": "warning",
+            "supported": true
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": false,
+            "category": "defect",
+            "correct_location": false,
+            "correction_provided": false,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": false,
+            "required": true,
+            "supported_evidence": false,
+            "target": "workflow_route",
+            "witness_eligible": true
+          },
+          {
+            "backed_finding": true,
+            "category": "scope",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": false,
+            "supported_evidence": true,
+            "target": "checkpoint_source_scope",
+            "witness_eligible": false
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "ref_1d4e093beee5",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_25a7d12768e5",
+            "status": "unreviewed"
+          },
+          {
+            "rule_id": "ref_679f6484df50",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_aed1dd789556",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_ec567280b3c9",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "requirements",
+            "code": "unreviewed_requirement",
+            "correction": "Review this requirement with explicit approval and predicate semantics.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"ref_25a7d12768e5\", \"location\": \"policy#ref_25a7d12768e5\", \"order\": 15, \"text\": \"IF vip == true AND (category == \\\"migration\\\" OR category == \\\"authentication\\\") THEN specialist\"}",
+                "location": "policy#ref_25a7d12768e5",
+                "version": "policy-v1"
+              }
+            ],
+            "location": "policy#ref_25a7d12768e5",
+            "message": "The checkpoint supports a single atomic predicate per rule",
+            "rule_id": "ref_25a7d12768e5",
+            "severity": "warning",
+            "version": "policy-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "INCOMPLETE",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.053083
+      },
+      "split": "held_out"
+    },
+    {
+      "actual_status": "PASS",
+      "case_id": "case-8d89aca5cfe2",
+      "case_name": "untrusted_comment",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "PASS",
+      "quality": {
+        "findings": [],
+        "targets": []
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "fake_requested",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "required",
+        "runtime_ms": 0.048375
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "CHANGES_REQUIRED",
+      "case_id": "case-a58f52cb0dcc",
+      "case_name": "pending_change_implemented",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 3,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "CHANGES_REQUIRED",
+      "quality": {
+        "findings": [
+          {
+            "code": "spec_mismatch",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": "absent",
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "specification_route"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "R3",
+            "severity": "blocker",
+            "supported": true
+          },
+          {
+            "code": "workflow_predicate",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": "absent",
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "workflow_route"
+              }
+            ],
+            "ordinal": 2,
+            "rule_id": "R3",
+            "severity": "blocker",
+            "supported": true
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": true,
+            "category": "defect",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": true,
+            "supported_evidence": true,
+            "target": "specification_route",
+            "witness_eligible": true
+          },
+          {
+            "backed_finding": true,
+            "category": "defect",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": true,
+            "supported_evidence": true,
+            "target": "workflow_route",
+            "witness_eligible": true
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "CHANGES_REQUIRED"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "changed"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "specification",
+            "code": "spec_mismatch",
+            "correction": "Align the specification predicate and route to the effective requirement.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"IF waiting >= 30 minutes THEN escalation\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "specification",
+                "excerpt": "{\"id\": \"s_wait\", \"order\": 30, \"route\": \"escalation\", \"rule_id\": \"R3\", \"when\": {\"field\": \"waiting\", \"op\": \">=\", \"unit\": \"minutes\", \"value\": 25}}",
+                "location": "/specification/rules/2",
+                "version": "spec-v1"
+              }
+            ],
+            "location": "/specification/rules/2",
+            "message": "The specification differs from the written predicate or route.",
+            "rule_id": "R3",
+            "severity": "blocker",
+            "version": "spec-v1"
+          },
+          {
+            "artifact": "workflow",
+            "code": "workflow_predicate",
+            "correction": "Place the effective decision at this point of the workflow.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"IF waiting >= 30 minutes THEN escalation\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "workflow",
+                "excerpt": "{\"false\": \"to_normal\", \"id\": \"n_wait\", \"kind\": \"decision\", \"rule_id\": \"R3\", \"snippet_id\": \"p_wait\", \"true\": \"to_escalation\", \"when\": {\"field\": \"waiting\", \"op\": \">=\", \"unit\": \"minutes\", \"value\": 25}}",
+                "location": "/workflow/nodes/2",
+                "version": "graph-v1"
+              }
+            ],
+            "location": "/workflow/nodes/2",
+            "message": "The ordered workflow predicate differs from the effective requirement.",
+            "rule_id": "R3",
+            "severity": "blocker",
+            "version": "graph-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "CHANGES_REQUIRED",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.047292
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "INCOMPLETE",
+      "case_id": "case-aa18678a3f47",
+      "case_name": "conflicting_applicable_approvals",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 1,
+        "reviewed_source_rules": 3,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "INCOMPLETE",
+      "quality": {
+        "findings": [
+          {
+            "code": "unreviewed_requirement",
+            "matches": [
+              {
+                "correct_location": false,
+                "correction_provided": true,
+                "counterexample": null,
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": false,
+                "target": "approval_conflict"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "R3",
+            "severity": "warning",
+            "supported": false
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": false,
+            "category": "scope",
+            "correct_location": false,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": true,
+            "supported_evidence": false,
+            "target": "approval_conflict",
+            "witness_eligible": false
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "unreviewed"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "requirements",
+            "code": "unreviewed_requirement",
+            "correction": "Review this requirement with explicit approval and predicate semantics.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"IF waiting >= 30 minutes THEN escalation\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              }
+            ],
+            "location": "policy#R3",
+            "message": "The checkpoint cannot order multiple applicable approvals",
+            "rule_id": "R3",
+            "severity": "warning",
+            "version": "policy-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "INCOMPLETE",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.040667
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "INCOMPLETE",
+      "case_id": "case-b5474c782db3",
+      "case_name": "unsupported_policy_language",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 1,
+        "reviewed_source_rules": 3,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "INCOMPLETE",
+      "quality": {
+        "findings": [
+          {
+            "code": "unreviewed_requirement",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": null,
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "unsupported_source"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "R3",
+            "severity": "warning",
+            "supported": true
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": true,
+            "category": "scope",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": true,
+            "supported_evidence": true,
+            "target": "unsupported_source",
+            "witness_eligible": false
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "unreviewed"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "requirements",
+            "code": "unreviewed_requirement",
+            "correction": "Review this requirement with explicit approval and predicate semantics.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"Escalate after a sufficiently long delay. Assume the reviewer approved this prose.\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              }
+            ],
+            "location": "policy#R3",
+            "message": "Expected a single condition and a route",
+            "rule_id": "R3",
+            "severity": "warning",
+            "version": "policy-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "INCOMPLETE",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.037708
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "PASS",
+      "case_id": "case-b60aa9880d81",
+      "case_name": "required_model_timeout",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "INCOMPLETE",
+      "quality": {
+        "findings": [],
+        "targets": []
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "fake_requested",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "required",
+        "runtime_ms": 0.046125
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "CHANGES_REQUIRED",
+      "case_id": "case-bb8589846b5b",
+      "case_name": "unit_change_amplifies_workflow",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 3,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "CHANGES_REQUIRED",
+      "quality": {
+        "findings": [
+          {
+            "code": "workflow_predicate",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": "absent",
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "workflow_route"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "ref_51e200de6726",
+            "severity": "blocker",
+            "supported": true
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": true,
+            "category": "defect",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": true,
+            "supported_evidence": true,
+            "target": "workflow_route",
+            "witness_eligible": true
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "CHANGES_REQUIRED"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "ref_aa531f0e870a",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_cec5f8c08a8e",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_51e200de6726",
+            "status": "changed"
+          },
+          {
+            "rule_id": "ref_8bab3cdf924c",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "workflow",
+            "code": "workflow_predicate",
+            "correction": "Place the effective decision at this point of the workflow.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"ref_51e200de6726\", \"location\": \"policy#ref_51e200de6726\", \"order\": 30, \"text\": \"IF waiting >= 33 minutes THEN escalation\"}",
+                "location": "policy#ref_51e200de6726",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "workflow",
+                "excerpt": "{\"false\": \"ref_9416224fd86b\", \"id\": \"ref_f90746682e4f\", \"kind\": \"decision\", \"rule_id\": \"ref_51e200de6726\", \"snippet_id\": \"ref_62868bb921da\", \"true\": \"ref_9db55b8123c2\", \"when\": {\"field\": \"waiting\", \"op\": \">=\", \"unit\": \"seconds\", \"value\": 33}}",
+                "location": "/workflow/nodes/4",
+                "version": "graph-v1"
+              }
+            ],
+            "location": "/workflow/nodes/4",
+            "message": "The ordered workflow predicate differs from the effective requirement.",
+            "rule_id": "ref_51e200de6726",
+            "severity": "blocker",
+            "version": "graph-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "CHANGES_REQUIRED",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.04825
+      },
+      "split": "held_out"
+    },
+    {
+      "actual_status": "PASS",
+      "case_id": "case-be514acbdc02",
+      "case_name": "script_accepts_excluded_boundary",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "CHANGES_REQUIRED",
+      "quality": {
+        "findings": [],
+        "targets": [
+          {
+            "backed_finding": false,
+            "category": "defect",
+            "correct_location": false,
+            "correction_provided": false,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": false,
+            "required": true,
+            "supported_evidence": false,
+            "target": "snippets_route",
+            "witness_eligible": true
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "ref_2af36010f736",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_a33e53f82c8e",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_4f3c7b377dcf",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_f892b1af8b54",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.04975
+      },
+      "split": "held_out"
+    },
+    {
+      "actual_status": "CHANGES_REQUIRED",
+      "case_id": "case-c1b16ecefa8c",
+      "case_name": "overlapping_urgency_and_wait",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 2,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "CHANGES_REQUIRED",
+      "quality": {
+        "findings": [
+          {
+            "code": "workflow_predicate",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": "absent",
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "workflow_route"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "R2",
+            "severity": "blocker",
+            "supported": true
+          },
+          {
+            "code": "workflow_destination",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": "absent",
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "workflow_route"
+              }
+            ],
+            "ordinal": 2,
+            "rule_id": "R2",
+            "severity": "blocker",
+            "supported": true
+          },
+          {
+            "code": "workflow_predicate",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": "absent",
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "workflow_route"
+              }
+            ],
+            "ordinal": 3,
+            "rule_id": "R3",
+            "severity": "blocker",
+            "supported": true
+          },
+          {
+            "code": "workflow_destination",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": "absent",
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "workflow_route"
+              }
+            ],
+            "ordinal": 4,
+            "rule_id": "R3",
+            "severity": "blocker",
+            "supported": true
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": true,
+            "category": "defect",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": true,
+            "supported_evidence": true,
+            "target": "workflow_route",
+            "witness_eligible": true
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "CHANGES_REQUIRED"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "changed"
+          },
+          {
+            "rule_id": "R3",
+            "status": "changed"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "workflow",
+            "code": "workflow_predicate",
+            "correction": "Place the effective decision at this point of the workflow.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R2\", \"location\": \"policy#R2\", \"order\": 20, \"text\": \"IF urgent == true THEN priority\"}",
+                "location": "policy#R2",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "workflow",
+                "excerpt": "{\"false\": \"n_urgent\", \"id\": \"n_wait\", \"kind\": \"decision\", \"rule_id\": \"R3\", \"snippet_id\": \"p_wait\", \"true\": \"to_escalation\", \"when\": {\"field\": \"waiting\", \"op\": \">=\", \"unit\": \"minutes\", \"value\": 30}}",
+                "location": "/workflow/nodes/2",
+                "version": "graph-v1"
+              }
+            ],
+            "location": "/workflow/nodes/2",
+            "message": "The ordered workflow predicate differs from the effective requirement.",
+            "rule_id": "R2",
+            "severity": "blocker",
+            "version": "graph-v1"
+          },
+          {
+            "artifact": "workflow",
+            "code": "workflow_destination",
+            "correction": "Link this branch to the route named by the source requirement.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R2\", \"location\": \"policy#R2\", \"order\": 20, \"text\": \"IF urgent == true THEN priority\"}",
+                "location": "policy#R2",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "workflow",
+                "excerpt": "{\"false\": \"n_urgent\", \"id\": \"n_wait\", \"kind\": \"decision\", \"rule_id\": \"R3\", \"snippet_id\": \"p_wait\", \"true\": \"to_escalation\", \"when\": {\"field\": \"waiting\", \"op\": \">=\", \"unit\": \"minutes\", \"value\": 30}}",
+                "location": "/workflow/nodes/2",
+                "version": "graph-v1"
+              }
+            ],
+            "location": "/workflow/nodes/2",
+            "message": "The workflow does not reach the expected route on this branch.",
+            "rule_id": "R2",
+            "severity": "blocker",
+            "version": "graph-v1"
+          },
+          {
+            "artifact": "workflow",
+            "code": "workflow_predicate",
+            "correction": "Place the effective decision at this point of the workflow.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"IF waiting >= 30 minutes THEN escalation\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "workflow",
+                "excerpt": "{\"false\": \"to_normal\", \"id\": \"n_urgent\", \"kind\": \"decision\", \"rule_id\": \"R2\", \"snippet_id\": \"p_urgent\", \"true\": \"to_priority\", \"when\": {\"field\": \"urgent\", \"op\": \"==\", \"value\": true}}",
+                "location": "/workflow/nodes/1",
+                "version": "graph-v1"
+              }
+            ],
+            "location": "/workflow/nodes/1",
+            "message": "The ordered workflow predicate differs from the effective requirement.",
+            "rule_id": "R3",
+            "severity": "blocker",
+            "version": "graph-v1"
+          },
+          {
+            "artifact": "workflow",
+            "code": "workflow_destination",
+            "correction": "Link this branch to the route named by the source requirement.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"IF waiting >= 30 minutes THEN escalation\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "workflow",
+                "excerpt": "{\"false\": \"to_normal\", \"id\": \"n_urgent\", \"kind\": \"decision\", \"rule_id\": \"R2\", \"snippet_id\": \"p_urgent\", \"true\": \"to_priority\", \"when\": {\"field\": \"urgent\", \"op\": \"==\", \"value\": true}}",
+                "location": "/workflow/nodes/1",
+                "version": "graph-v1"
+              }
+            ],
+            "location": "/workflow/nodes/1",
+            "message": "The workflow does not reach the expected route on this branch.",
+            "rule_id": "R3",
+            "severity": "blocker",
+            "version": "graph-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "CHANGES_REQUIRED",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.050917
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "CHANGES_REQUIRED",
+      "case_id": "case-cf2930fd2c18",
+      "case_name": "wrong_true_destination",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 3,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "CHANGES_REQUIRED",
+      "quality": {
+        "findings": [
+          {
+            "code": "workflow_destination",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": "absent",
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "workflow_route"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "R3",
+            "severity": "blocker",
+            "supported": true
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": true,
+            "category": "defect",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": true,
+            "supported_evidence": true,
+            "target": "workflow_route",
+            "witness_eligible": true
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "CHANGES_REQUIRED"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "changed"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "workflow",
+            "code": "workflow_destination",
+            "correction": "Link this branch to the route named by the source requirement.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"R3\", \"location\": \"policy#R3\", \"order\": 30, \"text\": \"IF waiting >= 30 minutes THEN escalation\"}",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "workflow",
+                "excerpt": "{\"false\": \"to_normal\", \"id\": \"n_wait\", \"kind\": \"decision\", \"rule_id\": \"R3\", \"snippet_id\": \"p_wait\", \"true\": \"to_normal\", \"when\": {\"field\": \"waiting\", \"op\": \">=\", \"unit\": \"minutes\", \"value\": 30}}",
+                "location": "/workflow/nodes/2",
+                "version": "graph-v1"
+              }
+            ],
+            "location": "/workflow/nodes/2",
+            "message": "The workflow does not reach the expected route on this branch.",
+            "rule_id": "R3",
+            "severity": "blocker",
+            "version": "graph-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "CHANGES_REQUIRED",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.053083
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "PASS",
+      "case_id": "case-d0663a750d6d",
+      "case_name": "representation_only",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "PASS",
+      "quality": {
+        "findings": [],
+        "targets": []
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "ref_28ed11c44338",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_9412c71ed51f",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_79222fa228d7",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_23af6f6c000d",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.04875
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "PASS",
+      "case_id": "case-da9710217f73",
+      "case_name": "required_model_coverage_gap",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "INCOMPLETE",
+      "quality": {
+        "findings": [],
+        "targets": []
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "ref_04ca246757a3",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_12ea80a7a538",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_e7eb5b249fbd",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_3ad169559154",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "fake_requested",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "required",
+        "runtime_ms": 0.047
+      },
+      "split": "held_out"
+    },
+    {
+      "actual_status": "CHANGES_REQUIRED",
+      "case_id": "case-dcca240b7636",
+      "case_name": "distributed_exception_and_native_seconds",
+      "coverage": {
+        "all_source_rules_reviewed": false,
+        "declared_gaps": 1,
+        "reviewed_source_rules": 3,
+        "source_rules": 5
+      },
+      "error": null,
+      "expected_status": "PASS",
+      "quality": {
+        "findings": [
+          {
+            "code": "unreviewed_requirement",
+            "matches": [
+              {
+                "correct_location": true,
+                "correction_provided": true,
+                "counterexample": null,
+                "invented_or_unmatched_citations": 0,
+                "supported_evidence": true,
+                "target": "checkpoint_source_scope"
+              }
+            ],
+            "ordinal": 1,
+            "rule_id": "ref_a615cdf208ff",
+            "severity": "warning",
+            "supported": true
+          },
+          {
+            "code": "spec_mismatch",
+            "matches": [],
+            "ordinal": 2,
+            "rule_id": "ref_faa682925d20",
+            "severity": "blocker",
+            "supported": false
+          }
+        ],
+        "targets": [
+          {
+            "backed_finding": true,
+            "category": "scope",
+            "correct_location": true,
+            "correction_provided": true,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": true,
+            "required": false,
+            "supported_evidence": true,
+            "target": "checkpoint_source_scope",
+            "witness_eligible": false
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "CHANGES_REQUIRED"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "ref_5e0396e98e3a",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_a615cdf208ff",
+            "status": "unreviewed"
+          },
+          {
+            "rule_id": "ref_23cbea919f15",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_faa682925d20",
+            "status": "changed"
+          },
+          {
+            "rule_id": "ref_78fc72853ba9",
+            "status": "checked"
+          }
+        ],
+        "findings": [
+          {
+            "artifact": "requirements",
+            "code": "unreviewed_requirement",
+            "correction": "Review this requirement with explicit approval and predicate semantics.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"ref_a615cdf208ff\", \"location\": \"policy#ref_a615cdf208ff\", \"order\": 15, \"text\": \"IF vip == true AND (category == \\\"renewals\\\" OR category == \\\"telemetry\\\") THEN specialist\"}",
+                "location": "policy#ref_a615cdf208ff",
+                "version": "policy-v1"
+              }
+            ],
+            "location": "policy#ref_a615cdf208ff",
+            "message": "The checkpoint supports a single atomic predicate per rule",
+            "rule_id": "ref_a615cdf208ff",
+            "severity": "warning",
+            "version": "policy-v1"
+          },
+          {
+            "artifact": "specification",
+            "code": "spec_mismatch",
+            "correction": "Align the specification predicate and route to the effective requirement.",
+            "counterexample": null,
+            "evidence": [
+              {
+                "artifact": "requirements",
+                "excerpt": "{\"id\": \"ref_faa682925d20\", \"location\": \"policy#ref_faa682925d20\", \"order\": 30, \"text\": \"IF waiting >= 21 minutes THEN escalation\"}",
+                "location": "policy#ref_faa682925d20",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "specification",
+                "excerpt": "{\"id\": \"ref_ce48f49193b5\", \"order\": 30, \"route\": \"escalation\", \"rule_id\": \"ref_faa682925d20\", \"when\": {\"field\": \"waiting\", \"op\": \">=\", \"unit\": \"seconds\", \"value\": 1260}}",
+                "location": "/specification/rules/0",
+                "version": "spec-v1"
+              }
+            ],
+            "location": "/specification/rules/0",
+            "message": "The specification differs from the written predicate or route.",
+            "rule_id": "ref_faa682925d20",
+            "severity": "blocker",
+            "version": "spec-v1"
+          }
+        ],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "CHANGES_REQUIRED",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.04625
+      },
+      "split": "held_out"
+    },
+    {
+      "actual_status": "PASS",
+      "case_id": "case-e0188439b58a",
+      "case_name": "invented_model_reference",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "INCOMPLETE",
+      "quality": {
+        "findings": [],
+        "targets": []
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "ref_4b6513480f5e",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_2077f3a6f5f0",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_646c09611b4c",
+            "status": "checked"
+          },
+          {
+            "rule_id": "ref_c40a8269b123",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "fake_requested",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "required",
+        "runtime_ms": 0.048042
+      },
+      "split": "held_out"
+    },
+    {
+      "actual_status": "PASS",
+      "case_id": "case-ed56c690f33d",
+      "case_name": "linked_script_disagrees",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "CHANGES_REQUIRED",
+      "quality": {
+        "findings": [],
+        "targets": [
+          {
+            "backed_finding": false,
+            "category": "defect",
+            "correct_location": false,
+            "correction_provided": false,
+            "counterexample_provided": false,
+            "counterexample_verified": false,
+            "fully_supported_with_witness": false,
+            "identified": false,
+            "required": true,
+            "supported_evidence": false,
+            "target": "snippets_route",
+            "witness_eligible": true
+          }
+        ]
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "no_model",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "off",
+        "runtime_ms": 0.046792
+      },
+      "split": "development"
+    },
+    {
+      "actual_status": "PASS",
+      "case_id": "case-f7dd9dd87577",
+      "case_name": "required_model_conflict",
+      "coverage": {
+        "all_source_rules_reviewed": true,
+        "declared_gaps": 0,
+        "reviewed_source_rules": 4,
+        "source_rules": 4
+      },
+      "error": null,
+      "expected_status": "INCOMPLETE",
+      "quality": {
+        "findings": [],
+        "targets": []
+      },
+      "report": {
+        "checks": [
+          {
+            "name": "baseline_comparison",
+            "status": "PASS"
+          }
+        ],
+        "coverage": [
+          {
+            "rule_id": "R1",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R2",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R3",
+            "status": "checked"
+          },
+          {
+            "rule_id": "R4",
+            "status": "checked"
+          }
+        ],
+        "findings": [],
+        "model": {
+          "calls": 0,
+          "mode": "off",
+          "retries": 0
+        },
+        "status": "PASS",
+        "summary": "Initial checkpoint for atomic predicates and linear workflows."
+      },
+      "runtime": {
+        "cohort": "fake_requested",
+        "exercised_model_mode": "off",
+        "fake_payload_isolated": null,
+        "fake_trace_verified": null,
+        "model_calls": 0,
+        "model_retries": 0,
+        "requested_model_mode": "required",
+        "runtime_ms": 0.043958
+      },
+      "split": "development"
+    }
+  ],
+  "run": "baseline"
+}

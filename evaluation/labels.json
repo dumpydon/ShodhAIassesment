@@ -1,0 +1,1401 @@
+{
+  "cases": {
+    "case-0d8ff631e84e": {
+      "expected_status": "INCOMPLETE",
+      "finding_targets": [
+        {
+          "category": "scope",
+          "citation_groups": [
+            [
+              {
+                "artifact": "snippets",
+                "location": "/items/2",
+                "version": "py-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "CODE_UNSUPPORTED"
+          ],
+          "locations": [
+            {
+              "artifact": "snippets",
+              "location": "/items/2",
+              "version": "py-v1"
+            }
+          ],
+          "name": "unsupported_script",
+          "required": true,
+          "rule_ids": [
+            "R3"
+          ],
+          "witness_layer": null
+        }
+      ],
+      "name": "unsupported_script_call",
+      "pair": null,
+      "rationale": "The script uses an arbitrary call and a non-Boolean fallback expression, outside the restricted code subset.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {},
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-119493dec815": {
+      "expected_status": "PASS",
+      "finding_targets": [
+        {
+          "category": "scope",
+          "citation_groups": [
+            [
+              {
+                "artifact": "approvals",
+                "location": "/records/0",
+                "version": "approvals-v1"
+              },
+              {
+                "artifact": "approvals",
+                "location": "/records/1",
+                "version": "approvals-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "unreviewed_requirement"
+          ],
+          "locations": [
+            {
+              "artifact": "requirements",
+              "location": "policy#R3",
+              "version": "policy-v1"
+            }
+          ],
+          "name": "checkpoint_approval_scope",
+          "required": false,
+          "rule_ids": [
+            "R3"
+          ],
+          "witness_layer": null
+        }
+      ],
+      "name": "sequential_approval",
+      "pair": null,
+      "rationale": "Two applicable approvals apply by explicit order, ending at 25 minutes. A different revision is out of scope.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {},
+        "operator": ">=",
+        "threshold": 25
+      },
+      "split": "development"
+    },
+    "case-1b7015d4e709": {
+      "expected_status": "INCOMPLETE",
+      "finding_targets": [],
+      "name": "required_model_truncation",
+      "pair": null,
+      "rationale": "Every required fake attempt returns incomplete JSON.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {},
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-31b2a185f046": {
+      "expected_status": "CHANGES_REQUIRED",
+      "finding_targets": [
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "workflow",
+                "location": "/nodes/2/true",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/2",
+                "version": "graph-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "WORKFLOW_MISSING_BRANCH",
+            "workflow_destination",
+            "missing_branch"
+          ],
+          "locations": [
+            {
+              "artifact": "workflow",
+              "location": "/nodes/2/true",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/2",
+              "version": "graph-v1"
+            }
+          ],
+          "name": "missing_true_branch",
+          "required": true,
+          "rule_ids": [
+            "R3"
+          ],
+          "witness_layer": null
+        }
+      ],
+      "name": "missing_workflow_branch",
+      "pair": null,
+      "rationale": "The wait decision lacks its true branch, so a waiting ticket lacks a reachable route.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {
+          "workflow": {
+            "wait_destination": null
+          }
+        },
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-44bac949132f": {
+      "expected_status": "PASS",
+      "finding_targets": [],
+      "name": "ordered_reference",
+      "pair": {
+        "group": "waiting_boundary",
+        "role": "reference"
+      },
+      "rationale": "Missing category, then urgent, then waiting at least 30 minutes, then normal.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {},
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-483449eef400": {
+      "expected_status": "PASS",
+      "finding_targets": [],
+      "name": "approval_scope_on_two_axes",
+      "pair": null,
+      "rationale": "Only the approval matching both the current revision and source version applies.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {},
+        "operator": ">=",
+        "threshold": 34
+      },
+      "split": "held_out"
+    },
+    "case-4bfdfab73994": {
+      "expected_status": "CHANGES_REQUIRED",
+      "finding_targets": [
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "SPEC_OMISSION",
+            "missing_requirement"
+          ],
+          "locations": [
+            {
+              "artifact": "requirements",
+              "location": "policy#R3",
+              "version": "policy-v1"
+            }
+          ],
+          "name": "source_anchored_omission",
+          "required": true,
+          "rule_ids": [
+            "R3"
+          ],
+          "witness_layer": null
+        },
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "specification",
+                "location": "/rules/2",
+                "version": "spec-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "SPEC_ROUTE_MISMATCH",
+            "spec_mismatch",
+            "spec_precedence"
+          ],
+          "locations": [
+            {
+              "artifact": "specification",
+              "location": "/rules/2",
+              "version": "spec-v1"
+            }
+          ],
+          "name": "omission_route_consequence",
+          "required": true,
+          "rule_ids": [
+            "R3",
+            "R4"
+          ],
+          "witness_layer": "specification"
+        }
+      ],
+      "name": "missing_spec_requirement",
+      "pair": null,
+      "rationale": "The written escalation requirement has no specification entry. Escalation still exists in the graph.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {
+          "specification": {
+            "skip_wait": true
+          }
+        },
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-5bcde7f20ec9": {
+      "expected_status": "CHANGES_REQUIRED",
+      "finding_targets": [
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "requirements",
+                "location": "policy#R4",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "specification",
+                "location": "/rules/2",
+                "version": "spec-v1"
+              },
+              {
+                "artifact": "specification",
+                "location": "/rules/3",
+                "version": "spec-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "SPEC_ROUTE_MISMATCH",
+            "spec_mismatch",
+            "spec_precedence"
+          ],
+          "locations": [
+            {
+              "artifact": "specification",
+              "location": "/rules/2",
+              "version": "spec-v1"
+            },
+            {
+              "artifact": "specification",
+              "location": "/rules/3",
+              "version": "spec-v1"
+            }
+          ],
+          "name": "specification_route",
+          "required": true,
+          "rule_ids": [
+            "R3",
+            "R4"
+          ],
+          "witness_layer": "specification"
+        },
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "requirements",
+                "location": "policy#R4",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "workflow",
+                "location": "/nodes/2",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/6",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/2/false",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/6/false",
+                "version": "graph-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "WORKFLOW_ROUTE_MISMATCH",
+            "workflow_predicate",
+            "workflow_destination"
+          ],
+          "locations": [
+            {
+              "artifact": "workflow",
+              "location": "/nodes/2",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/6",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/2/false",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/6/false",
+              "version": "graph-v1"
+            }
+          ],
+          "name": "workflow_route",
+          "required": true,
+          "rule_ids": [
+            "R3",
+            "R4"
+          ],
+          "witness_layer": "workflow"
+        }
+      ],
+      "name": "inclusive_boundary_lost",
+      "pair": {
+        "group": "waiting_boundary",
+        "role": "behavior_change"
+      },
+      "rationale": "The spec, workflow, and linked code all skip escalation at exactly 30 minutes.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {
+          "specification": {
+            "operator": ">"
+          },
+          "workflow": {
+            "operator": ">"
+          }
+        },
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-82be91b5c8b4": {
+      "expected_status": "CHANGES_REQUIRED",
+      "finding_targets": [
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#ref_679f6484df50",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "requirements",
+                "location": "policy#ref_25a7d12768e5",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "workflow",
+                "location": "/nodes/8",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/0",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/1",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/5",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/8/false",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/0/false",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/1/false",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/5/false",
+                "version": "graph-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "WORKFLOW_ROUTE_MISMATCH",
+            "workflow_predicate",
+            "workflow_destination"
+          ],
+          "locations": [
+            {
+              "artifact": "workflow",
+              "location": "/nodes/8",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/0",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/1",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/5",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/8/false",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/0/false",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/1/false",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/5/false",
+              "version": "graph-v1"
+            }
+          ],
+          "name": "workflow_route",
+          "required": true,
+          "rule_ids": [
+            "ref_679f6484df50",
+            "ref_25a7d12768e5"
+          ],
+          "witness_layer": "workflow"
+        },
+        {
+          "category": "scope",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#ref_25a7d12768e5",
+                "version": "policy-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "unreviewed_requirement"
+          ],
+          "locations": [
+            {
+              "artifact": "requirements",
+              "location": "policy#ref_25a7d12768e5",
+              "version": "policy-v1"
+            }
+          ],
+          "name": "checkpoint_source_scope",
+          "required": false,
+          "rule_ids": [
+            "ref_25a7d12768e5"
+          ],
+          "witness_layer": null
+        }
+      ],
+      "name": "exception_shadowed_by_urgency",
+      "pair": null,
+      "rationale": "The graph tests urgency before the VIP exception and sends an overlapping ticket to priority instead of specialist. Each decision's condition and true destination are individually plausible.",
+      "routing_oracle": {
+        "exception_categories": [
+          "migration",
+          "authentication"
+        ],
+        "layers": {
+          "workflow": {
+            "order": [
+              "missing",
+              "urgent",
+              "vip",
+              "wait"
+            ]
+          }
+        },
+        "operator": ">=",
+        "threshold": 51
+      },
+      "split": "held_out"
+    },
+    "case-8d89aca5cfe2": {
+      "expected_status": "PASS",
+      "finding_targets": [],
+      "name": "untrusted_comment",
+      "pair": null,
+      "rationale": "A Python comment asks the reviewer to elevate a pending change. The actual route still honors the original rule. The required fake model returns a valid response after a truncated attempt.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {},
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-a58f52cb0dcc": {
+      "expected_status": "CHANGES_REQUIRED",
+      "finding_targets": [
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "requirements",
+                "location": "policy#R4",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "specification",
+                "location": "/rules/2",
+                "version": "spec-v1"
+              },
+              {
+                "artifact": "specification",
+                "location": "/rules/3",
+                "version": "spec-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "SPEC_ROUTE_MISMATCH",
+            "spec_mismatch",
+            "spec_precedence"
+          ],
+          "locations": [
+            {
+              "artifact": "specification",
+              "location": "/rules/2",
+              "version": "spec-v1"
+            },
+            {
+              "artifact": "specification",
+              "location": "/rules/3",
+              "version": "spec-v1"
+            }
+          ],
+          "name": "specification_route",
+          "required": true,
+          "rule_ids": [
+            "R3",
+            "R4"
+          ],
+          "witness_layer": "specification"
+        },
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "requirements",
+                "location": "policy#R4",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "workflow",
+                "location": "/nodes/2",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/5",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/2/true",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/5/true",
+                "version": "graph-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "WORKFLOW_ROUTE_MISMATCH",
+            "workflow_predicate",
+            "workflow_destination"
+          ],
+          "locations": [
+            {
+              "artifact": "workflow",
+              "location": "/nodes/2",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/5",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/2/true",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/5/true",
+              "version": "graph-v1"
+            }
+          ],
+          "name": "workflow_route",
+          "required": true,
+          "rule_ids": [
+            "R3",
+            "R4"
+          ],
+          "witness_layer": "workflow"
+        }
+      ],
+      "name": "pending_change_implemented",
+      "pair": null,
+      "rationale": "The artifacts implement a pending proposal. A nonurgent categorized ticket at 27 minutes still belongs in normal.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {
+          "specification": {
+            "threshold": 25
+          },
+          "workflow": {
+            "threshold": 25
+          }
+        },
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-aa18678a3f47": {
+      "expected_status": "INCOMPLETE",
+      "finding_targets": [
+        {
+          "category": "scope",
+          "citation_groups": [
+            [
+              {
+                "artifact": "approvals",
+                "location": "/records/0",
+                "version": "approvals-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "approvals",
+                "location": "/records/1",
+                "version": "approvals-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "APPROVAL_CONFLICT",
+            "unreviewed_requirement"
+          ],
+          "locations": [
+            {
+              "artifact": "approvals",
+              "location": "/records/0",
+              "version": "approvals-v1"
+            },
+            {
+              "artifact": "approvals",
+              "location": "/records/1",
+              "version": "approvals-v1"
+            }
+          ],
+          "name": "approval_conflict",
+          "required": true,
+          "rule_ids": [
+            "R3"
+          ],
+          "witness_layer": null
+        }
+      ],
+      "name": "conflicting_applicable_approvals",
+      "pair": null,
+      "rationale": "The same approved slot has two different replacements. Neither can be used as the effective requirement.",
+      "routing_oracle": null,
+      "split": "development"
+    },
+    "case-b5474c782db3": {
+      "expected_status": "INCOMPLETE",
+      "finding_targets": [
+        {
+          "category": "scope",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "SOURCE_UNSUPPORTED",
+            "unreviewed_requirement"
+          ],
+          "locations": [
+            {
+              "artifact": "requirements",
+              "location": "policy#R3",
+              "version": "policy-v1"
+            }
+          ],
+          "name": "unsupported_source",
+          "required": true,
+          "rule_ids": [
+            "R3"
+          ],
+          "witness_layer": null
+        }
+      ],
+      "name": "unsupported_policy_language",
+      "pair": null,
+      "rationale": "The source gives no testable delay and its own approval claim has no authority.",
+      "routing_oracle": null,
+      "split": "development"
+    },
+    "case-b60aa9880d81": {
+      "expected_status": "INCOMPLETE",
+      "finding_targets": [],
+      "name": "required_model_timeout",
+      "pair": null,
+      "rationale": "Every required fake attempt times out.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {},
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-bb8589846b5b": {
+      "expected_status": "CHANGES_REQUIRED",
+      "finding_targets": [
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#ref_51e200de6726",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "requirements",
+                "location": "policy#ref_8bab3cdf924c",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "workflow",
+                "location": "/nodes/4",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/1",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/4/true",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/1/true",
+                "version": "graph-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "WORKFLOW_ROUTE_MISMATCH",
+            "workflow_predicate",
+            "workflow_destination"
+          ],
+          "locations": [
+            {
+              "artifact": "workflow",
+              "location": "/nodes/4",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/1",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/4/true",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/1/true",
+              "version": "graph-v1"
+            }
+          ],
+          "name": "workflow_route",
+          "required": true,
+          "rule_ids": [
+            "ref_51e200de6726",
+            "ref_8bab3cdf924c"
+          ],
+          "witness_layer": "workflow"
+        }
+      ],
+      "name": "unit_change_amplifies_workflow",
+      "pair": null,
+      "rationale": "The workflow and linked snippet agree with each other at the smaller seconds threshold. The written policy and spec specify minutes.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {
+          "workflow": {
+            "threshold": 33
+          }
+        },
+        "operator": ">=",
+        "threshold": 1980
+      },
+      "split": "held_out"
+    },
+    "case-be514acbdc02": {
+      "expected_status": "CHANGES_REQUIRED",
+      "finding_targets": [
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#ref_4f3c7b377dcf",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "snippets",
+                "location": "/items/1",
+                "version": "py-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "CODE_BEHAVIOR_MISMATCH"
+          ],
+          "locations": [
+            {
+              "artifact": "snippets",
+              "location": "/items/1",
+              "version": "py-v1"
+            }
+          ],
+          "name": "snippets_route",
+          "required": true,
+          "rule_ids": [
+            "ref_4f3c7b377dcf"
+          ],
+          "witness_layer": "snippets"
+        }
+      ],
+      "name": "script_accepts_excluded_boundary",
+      "pair": null,
+      "rationale": "At exactly the threshold, the linked code escalates while the exclusive policy sends the ticket to normal.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {
+          "snippets": {
+            "operator": ">="
+          }
+        },
+        "operator": ">",
+        "threshold": 600
+      },
+      "split": "held_out"
+    },
+    "case-c1b16ecefa8c": {
+      "expected_status": "CHANGES_REQUIRED",
+      "finding_targets": [
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#R2",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "requirements",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "workflow",
+                "location": "/nodes/0",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/2",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/1",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/5",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/0/false",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/2/false",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/1/false",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/5/false",
+                "version": "graph-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "WORKFLOW_ROUTE_MISMATCH",
+            "workflow_predicate",
+            "workflow_destination"
+          ],
+          "locations": [
+            {
+              "artifact": "workflow",
+              "location": "/nodes/0",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/2",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/1",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/5",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/0/false",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/2/false",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/1/false",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/5/false",
+              "version": "graph-v1"
+            }
+          ],
+          "name": "workflow_route",
+          "required": true,
+          "rule_ids": [
+            "R2",
+            "R3"
+          ],
+          "witness_layer": "workflow"
+        }
+      ],
+      "name": "overlapping_urgency_and_wait",
+      "pair": null,
+      "rationale": "Both individual decisions are plausible. A categorized urgent ticket at or above 30 minutes goes to escalation because the workflow checks wait before urgency.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {
+          "workflow": {
+            "order": [
+              "missing",
+              "wait",
+              "urgent"
+            ]
+          }
+        },
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-cf2930fd2c18": {
+      "expected_status": "CHANGES_REQUIRED",
+      "finding_targets": [
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#R3",
+                "version": "policy-v1"
+              },
+              {
+                "artifact": "requirements",
+                "location": "policy#R4",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "workflow",
+                "location": "/nodes/2",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/6",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/2/true",
+                "version": "graph-v1"
+              },
+              {
+                "artifact": "workflow",
+                "location": "/nodes/6/true",
+                "version": "graph-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "WORKFLOW_ROUTE_MISMATCH",
+            "workflow_predicate",
+            "workflow_destination"
+          ],
+          "locations": [
+            {
+              "artifact": "workflow",
+              "location": "/nodes/2",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/6",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/2/true",
+              "version": "graph-v1"
+            },
+            {
+              "artifact": "workflow",
+              "location": "/nodes/6/true",
+              "version": "graph-v1"
+            }
+          ],
+          "name": "workflow_route",
+          "required": true,
+          "rule_ids": [
+            "R3",
+            "R4"
+          ],
+          "witness_layer": "workflow"
+        }
+      ],
+      "name": "wrong_true_destination",
+      "pair": null,
+      "rationale": "The true wait branch ends at normal despite a correct waiting predicate and linked script.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {
+          "workflow": {
+            "wait_destination": "normal"
+          }
+        },
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-d0663a750d6d": {
+      "expected_status": "PASS",
+      "finding_targets": [],
+      "name": "representation_only",
+      "pair": {
+        "group": "waiting_boundary",
+        "role": "representation_only"
+      },
+      "rationale": "All cross-references are renamed and arrays are permuted. Order and branch links retain their meaning.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {},
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-da9710217f73": {
+      "expected_status": "INCOMPLETE",
+      "finding_targets": [],
+      "name": "required_model_coverage_gap",
+      "pair": null,
+      "rationale": "The fake omits a rule from otherwise well-formed coverage.",
+      "routing_oracle": null,
+      "split": "held_out"
+    },
+    "case-dcca240b7636": {
+      "expected_status": "PASS",
+      "finding_targets": [
+        {
+          "category": "scope",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#ref_a615cdf208ff",
+                "version": "policy-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "unreviewed_requirement"
+          ],
+          "locations": [
+            {
+              "artifact": "requirements",
+              "location": "policy#ref_a615cdf208ff",
+              "version": "policy-v1"
+            }
+          ],
+          "name": "checkpoint_source_scope",
+          "required": false,
+          "rule_ids": [
+            "ref_a615cdf208ff"
+          ],
+          "witness_layer": null
+        }
+      ],
+      "name": "distributed_exception_and_native_seconds",
+      "pair": null,
+      "rationale": "Distributivity, operand order, and minutes-to-seconds conversion preserve behavior. The earlier missing-category dispatch makes bracket access safe on the exception node.",
+      "routing_oracle": {
+        "exception_categories": [
+          "renewals",
+          "telemetry"
+        ],
+        "layers": {},
+        "operator": ">=",
+        "threshold": 1260
+      },
+      "split": "held_out"
+    },
+    "case-e0188439b58a": {
+      "expected_status": "INCOMPLETE",
+      "finding_targets": [],
+      "name": "invented_model_reference",
+      "pair": null,
+      "rationale": "One fake attempt refers to a fabricated rule and a second supplies a fabricated evidence anchor.",
+      "routing_oracle": null,
+      "split": "held_out"
+    },
+    "case-ed56c690f33d": {
+      "expected_status": "CHANGES_REQUIRED",
+      "finding_targets": [
+        {
+          "category": "defect",
+          "citation_groups": [
+            [
+              {
+                "artifact": "requirements",
+                "location": "policy#R2",
+                "version": "policy-v1"
+              }
+            ],
+            [
+              {
+                "artifact": "snippets",
+                "location": "/items/1",
+                "version": "py-v1"
+              }
+            ]
+          ],
+          "codes": [
+            "CODE_BEHAVIOR_MISMATCH"
+          ],
+          "locations": [
+            {
+              "artifact": "snippets",
+              "location": "/items/1",
+              "version": "py-v1"
+            }
+          ],
+          "name": "snippets_route",
+          "required": true,
+          "rule_ids": [
+            "R2"
+          ],
+          "witness_layer": "snippets"
+        }
+      ],
+      "name": "linked_script_disagrees",
+      "pair": null,
+      "rationale": "The linked urgency script inverts the urgent predicate while the workflow metadata stays correct.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {
+          "snippets": {
+            "invert_urgent": true
+          }
+        },
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    },
+    "case-f7dd9dd87577": {
+      "expected_status": "INCOMPLETE",
+      "finding_targets": [],
+      "name": "required_model_conflict",
+      "pair": null,
+      "rationale": "The fake cites a real rule but invents a defect that has no deterministic blocker.",
+      "routing_oracle": {
+        "exception_categories": [],
+        "layers": {},
+        "operator": ">=",
+        "threshold": 30
+      },
+      "split": "development"
+    }
+  },
+  "schema_version": 1
+}

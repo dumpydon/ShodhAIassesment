@@ -1,0 +1,178 @@
+{
+  "approvals": {
+    "records": [],
+    "version": "approvals-v1"
+  },
+  "fields": {
+    "category": {
+      "nullable": true,
+      "type": "string"
+    },
+    "urgent": {
+      "type": "boolean"
+    },
+    "waiting": {
+      "nullable": true,
+      "type": "number",
+      "unit": "seconds"
+    }
+  },
+  "requirements": {
+    "rules": [
+      {
+        "id": "ref_cec5f8c08a8e",
+        "location": "policy#ref_cec5f8c08a8e",
+        "order": 20,
+        "text": "IF urgent == true THEN priority"
+      },
+      {
+        "id": "ref_aa531f0e870a",
+        "location": "policy#ref_aa531f0e870a",
+        "order": 10,
+        "text": "IF category IS MISSING THEN manual"
+      },
+      {
+        "id": "ref_8bab3cdf924c",
+        "location": "policy#ref_8bab3cdf924c",
+        "order": 40,
+        "text": "OTHERWISE THEN normal"
+      },
+      {
+        "id": "ref_51e200de6726",
+        "location": "policy#ref_51e200de6726",
+        "order": 30,
+        "text": "IF waiting >= 33 minutes THEN escalation"
+      }
+    ],
+    "version": "policy-v1"
+  },
+  "revision": "rev1",
+  "schema_version": "1.0",
+  "snippets": {
+    "items": [
+      {
+        "id": "ref_62868bb921da",
+        "source": "def decide(ticket):\n    return ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 33\n"
+      },
+      {
+        "id": "ref_05c59796472f",
+        "source": "def decide(ticket):\n    return ticket.get(\"urgent\") == True\n"
+      },
+      {
+        "id": "ref_d08e6e3c6133",
+        "source": "def decide(ticket):\n    return ticket.get(\"category\") is None\n"
+      }
+    ],
+    "version": "py-v1"
+  },
+  "specification": {
+    "rules": [
+      {
+        "id": "ref_14a719637c16",
+        "order": 40,
+        "route": "normal",
+        "rule_id": "ref_8bab3cdf924c",
+        "when": true
+      },
+      {
+        "id": "ref_03d90a6af1f2",
+        "order": 20,
+        "route": "priority",
+        "rule_id": "ref_cec5f8c08a8e",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "id": "ref_7887d6c8d421",
+        "order": 10,
+        "route": "manual",
+        "rule_id": "ref_aa531f0e870a",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "id": "ref_e07a448c6627",
+        "order": 30,
+        "route": "escalation",
+        "rule_id": "ref_51e200de6726",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 33
+        }
+      }
+    ],
+    "version": "spec-v1"
+  },
+  "workflow": {
+    "entry": "ref_1090a8809177",
+    "nodes": [
+      {
+        "id": "ref_9416224fd86b",
+        "kind": "route",
+        "route": "normal"
+      },
+      {
+        "id": "ref_9db55b8123c2",
+        "kind": "route",
+        "route": "escalation"
+      },
+      {
+        "false": "ref_f90746682e4f",
+        "id": "ref_695e3920d46d",
+        "kind": "decision",
+        "rule_id": "ref_cec5f8c08a8e",
+        "snippet_id": "ref_05c59796472f",
+        "true": "ref_7e29e75e684a",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "id": "ref_3e583a4fbfc6",
+        "kind": "route",
+        "route": "manual"
+      },
+      {
+        "false": "ref_9416224fd86b",
+        "id": "ref_f90746682e4f",
+        "kind": "decision",
+        "rule_id": "ref_51e200de6726",
+        "snippet_id": "ref_62868bb921da",
+        "true": "ref_9db55b8123c2",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "seconds",
+          "value": 33
+        }
+      },
+      {
+        "id": "ref_7e29e75e684a",
+        "kind": "route",
+        "route": "priority"
+      },
+      {
+        "false": "ref_695e3920d46d",
+        "id": "ref_1090a8809177",
+        "kind": "decision",
+        "rule_id": "ref_aa531f0e870a",
+        "snippet_id": "ref_d08e6e3c6133",
+        "true": "ref_3e583a4fbfc6",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      }
+    ],
+    "version": "graph-v1"
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "approvals": {
+    "records": [],
+    "version": "approvals-v1"
+  },
+  "fields": {
+    "category": {
+      "nullable": true,
+      "type": "string"
+    },
+    "urgent": {
+      "type": "boolean"
+    },
+    "waiting": {
+      "nullable": true,
+      "type": "number",
+      "unit": "minutes"
+    }
+  },
+  "requirements": {
+    "rules": [
+      {
+        "id": "R1",
+        "location": "policy#R1",
+        "order": 10,
+        "text": "IF category IS MISSING THEN manual"
+      },
+      {
+        "id": "R2",
+        "location": "policy#R2",
+        "order": 20,
+        "text": "IF urgent == true THEN priority"
+      },
+      {
+        "id": "R3",
+        "location": "policy#R3",
+        "order": 30,
+        "text": "IF waiting >= 30 minutes THEN escalation"
+      },
+      {
+        "id": "R4",
+        "location": "policy#R4",
+        "order": 40,
+        "text": "OTHERWISE THEN normal"
+      }
+    ],
+    "version": "policy-v1"
+  },
+  "revision": "rev1",
+  "schema_version": "1.0",
+  "snippets": {
+    "items": [
+      {
+        "id": "p_missing",
+        "source": "def decide(ticket):\n    return ticket.get(\"category\") is None\n"
+      },
+      {
+        "id": "p_urgent",
+        "source": "def decide(ticket):\n    return ticket.get(\"urgent\") == True\n"
+      },
+      {
+        "id": "p_wait",
+        "source": "def decide(ticket):\n    return ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 30\n"
+      }
+    ],
+    "version": "py-v1"
+  },
+  "specification": {
+    "rules": [
+      {
+        "id": "s_missing",
+        "order": 10,
+        "route": "manual",
+        "rule_id": "R1",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "id": "s_urgent",
+        "order": 20,
+        "route": "priority",
+        "rule_id": "R2",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "id": "s_wait",
+        "order": 30,
+        "route": "escalation",
+        "rule_id": "R3",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 30
+        }
+      },
+      {
+        "id": "s_fallback",
+        "order": 40,
+        "route": "normal",
+        "rule_id": "R4",
+        "when": true
+      }
+    ],
+    "version": "spec-v1"
+  },
+  "workflow": {
+    "entry": "n_missing",
+    "nodes": [
+      {
+        "false": "n_urgent",
+        "id": "n_missing",
+        "kind": "decision",
+        "rule_id": "R1",
+        "snippet_id": "p_missing",
+        "true": "to_manual",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "false": "n_wait",
+        "id": "n_urgent",
+        "kind": "decision",
+        "rule_id": "R2",
+        "snippet_id": "p_urgent",
+        "true": "to_priority",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "false": "to_normal",
+        "id": "n_wait",
+        "kind": "decision",
+        "rule_id": "R3",
+        "snippet_id": "p_wait",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 30
+        }
+      },
+      {
+        "id": "to_manual",
+        "kind": "route",
+        "route": "manual"
+      },
+      {
+        "id": "to_priority",
+        "kind": "route",
+        "route": "priority"
+      },
+      {
+        "id": "to_escalation",
+        "kind": "route",
+        "route": "escalation"
+      },
+      {
+        "id": "to_normal",
+        "kind": "route",
+        "route": "normal"
+      }
+    ],
+    "version": "graph-v1"
+  }
+}

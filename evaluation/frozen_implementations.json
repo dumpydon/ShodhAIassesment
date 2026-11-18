@@ -1,0 +1,24 @@
+{
+  "algorithm": "sha256",
+  "baseline": {
+    "commit": "208ffb67350cddcdcbcbe1cc91cfcd2dcea67735",
+    "files": {
+      "baseline.py": "d745bd7c074bd3fe51120704eb04d8f6e67fe76ef4e0d295a99a4ca54647b65e"
+    }
+  },
+  "final": {
+    "commit": "1bd3e2280e49ceff2bd082650a2c6b3a5552e87a",
+    "files": {
+      "reviewer/__init__.py": "c59c08a748dac62152aefabd04a1346288015b8dd6f227e1892ddad38e3011a0",
+      "reviewer/__main__.py": "812b20184f6ce01e7e4b333ddbf5a496da52a0209a25213c9c44636d474663c2",
+      "reviewer/app.py": "82526f777a7c683054c76ade632d733d98e96b487c2f7ca8873a84b4e5535a93",
+      "reviewer/bundle.py": "c5040425eb3c1ab0a8ad110f9dc8cd165d4accd5720f687b20e5822412d27738",
+      "reviewer/core.py": "0d48abdf3df71723dfc52725797b7c1bbdb94683a2b0fed947c3e03444edf89c",
+      "reviewer/json_io.py": "5eb2b7870e0796a679e76f603f97662e6f6a976ac121d14212b31e980a3a78a1",
+      "reviewer/logic.py": "22eabb4db4a493775558caf170d347ade696a5b2052fbaab8868ed33c64550f2",
+      "reviewer/model.py": "bbd9ad7039ab86812401f6384b8cbb279268f522bea38d9d2ea1f5bb86cd66a8",
+      "reviewer/python_subset.py": "7b3008f61134ce0bc340c20dc14852d9f283c31bb007fc5dd136ef5c2510b9b9",
+      "reviewer/report.py": "4bcc501223b667ac8422a10d6229b66b5addd7cd0918d2a3c9b7421ddbe704ee"
+    }
+  }
+}

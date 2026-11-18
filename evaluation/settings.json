@@ -1,0 +1,86 @@
+{
+  "ablation": "omit_boundaries",
+  "model_by_case": {
+    "case-0d8ff631e84e": {
+      "mode": "off"
+    },
+    "case-119493dec815": {
+      "mode": "off"
+    },
+    "case-1b7015d4e709": {
+      "fake_transcript": "truncated",
+      "mode": "required"
+    },
+    "case-31b2a185f046": {
+      "mode": "off"
+    },
+    "case-44bac949132f": {
+      "mode": "off"
+    },
+    "case-483449eef400": {
+      "mode": "off"
+    },
+    "case-4bfdfab73994": {
+      "mode": "off"
+    },
+    "case-5bcde7f20ec9": {
+      "mode": "off"
+    },
+    "case-82be91b5c8b4": {
+      "mode": "off"
+    },
+    "case-8d89aca5cfe2": {
+      "fake_transcript": "truncated_then_valid",
+      "mode": "required"
+    },
+    "case-a58f52cb0dcc": {
+      "mode": "off"
+    },
+    "case-aa18678a3f47": {
+      "mode": "off"
+    },
+    "case-b5474c782db3": {
+      "mode": "off"
+    },
+    "case-b60aa9880d81": {
+      "fake_transcript": "timeout",
+      "mode": "required"
+    },
+    "case-bb8589846b5b": {
+      "mode": "off"
+    },
+    "case-be514acbdc02": {
+      "mode": "off"
+    },
+    "case-c1b16ecefa8c": {
+      "mode": "off"
+    },
+    "case-cf2930fd2c18": {
+      "mode": "off"
+    },
+    "case-d0663a750d6d": {
+      "mode": "off"
+    },
+    "case-da9710217f73": {
+      "fake_transcript": "coverage_gap",
+      "mode": "required"
+    },
+    "case-dcca240b7636": {
+      "mode": "off"
+    },
+    "case-e0188439b58a": {
+      "fake_transcript": "invented_reference",
+      "mode": "required"
+    },
+    "case-ed56c690f33d": {
+      "mode": "off"
+    },
+    "case-f7dd9dd87577": {
+      "fake_transcript": "conflicting_claim",
+      "mode": "required"
+    }
+  },
+  "model_max_attempts": 2,
+  "schema_version": 1,
+  "seed": 351722
+}

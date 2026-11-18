@@ -1,0 +1,256 @@
+{
+  "approvals": {
+    "records": [],
+    "version": "approvals-v1"
+  },
+  "fields": {
+    "category": {
+      "nullable": true,
+      "type": "string"
+    },
+    "urgent": {
+      "type": "boolean"
+    },
+    "vip": {
+      "type": "boolean"
+    },
+    "waiting": {
+      "nullable": true,
+      "type": "number",
+      "unit": "minutes"
+    }
+  },
+  "requirements": {
+    "rules": [
+      {
+        "id": "ref_1d4e093beee5",
+        "location": "policy#ref_1d4e093beee5",
+        "order": 10,
+        "text": "IF category IS MISSING THEN manual"
+      },
+      {
+        "id": "ref_679f6484df50",
+        "location": "policy#ref_679f6484df50",
+        "order": 20,
+        "text": "IF urgent == true THEN priority"
+      },
+      {
+        "id": "ref_ec567280b3c9",
+        "location": "policy#ref_ec567280b3c9",
+        "order": 40,
+        "text": "OTHERWISE THEN normal"
+      },
+      {
+        "id": "ref_aed1dd789556",
+        "location": "policy#ref_aed1dd789556",
+        "order": 30,
+        "text": "IF waiting >= 51 minutes THEN escalation"
+      },
+      {
+        "id": "ref_25a7d12768e5",
+        "location": "policy#ref_25a7d12768e5",
+        "order": 15,
+        "text": "IF vip == true AND (category == \"migration\" OR category == \"authentication\") THEN specialist"
+      }
+    ],
+    "version": "policy-v1"
+  },
+  "revision": "rev1",
+  "schema_version": "1.0",
+  "snippets": {
+    "items": [
+      {
+        "id": "ref_59b0f2a299a8",
+        "source": "def decide(ticket):\n    return ticket.get(\"urgent\") == True\n"
+      },
+      {
+        "id": "ref_212729efb5be",
+        "source": "def decide(ticket):\n    return ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 51\n"
+      },
+      {
+        "id": "ref_9ca2b9c594db",
+        "source": "def decide(ticket):\n    return ticket.get(\"category\") is None\n"
+      },
+      {
+        "id": "ref_cd35a32ce8b3",
+        "source": "def decide(ticket):\n    return ticket.get(\"vip\") == True and (ticket.get(\"category\") == \"migration\" or ticket.get(\"category\") == \"authentication\")\n"
+      }
+    ],
+    "version": "py-v1"
+  },
+  "specification": {
+    "rules": [
+      {
+        "id": "ref_7d2993ad75f5",
+        "order": 20,
+        "route": "priority",
+        "rule_id": "ref_679f6484df50",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "id": "ref_20d03b7fc7c2",
+        "order": 40,
+        "route": "normal",
+        "rule_id": "ref_ec567280b3c9",
+        "when": true
+      },
+      {
+        "id": "ref_886902d5f7de",
+        "order": 10,
+        "route": "manual",
+        "rule_id": "ref_1d4e093beee5",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "id": "ref_1255e41cb04f",
+        "order": 30,
+        "route": "escalation",
+        "rule_id": "ref_aed1dd789556",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 51
+        }
+      },
+      {
+        "id": "ref_a9c8522e7bc2",
+        "order": 15,
+        "route": "specialist",
+        "rule_id": "ref_25a7d12768e5",
+        "when": {
+          "all": [
+            {
+              "field": "vip",
+              "op": "==",
+              "value": true
+            },
+            {
+              "any": [
+                {
+                  "field": "category",
+                  "op": "==",
+                  "value": "migration"
+                },
+                {
+                  "field": "category",
+                  "op": "==",
+                  "value": "authentication"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "version": "spec-v1"
+  },
+  "workflow": {
+    "entry": "ref_ac198e0d5d63",
+    "nodes": [
+      {
+        "false": "ref_d49aa20df1ee",
+        "id": "ref_be08cdaf3765",
+        "kind": "decision",
+        "rule_id": "ref_679f6484df50",
+        "snippet_id": "ref_59b0f2a299a8",
+        "true": "ref_52033b3b4207",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "false": "ref_38e53b4d77ec",
+        "id": "ref_d49aa20df1ee",
+        "kind": "decision",
+        "rule_id": "ref_25a7d12768e5",
+        "snippet_id": "ref_cd35a32ce8b3",
+        "true": "ref_0ce8f22f7124",
+        "when": {
+          "all": [
+            {
+              "field": "vip",
+              "op": "==",
+              "value": true
+            },
+            {
+              "any": [
+                {
+                  "field": "category",
+                  "op": "==",
+                  "value": "migration"
+                },
+                {
+                  "field": "category",
+                  "op": "==",
+                  "value": "authentication"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "ref_f97d8235e4b4",
+        "kind": "route",
+        "route": "manual"
+      },
+      {
+        "id": "ref_0ce8f22f7124",
+        "kind": "route",
+        "route": "specialist"
+      },
+      {
+        "id": "ref_0148d4d04d31",
+        "kind": "route",
+        "route": "escalation"
+      },
+      {
+        "id": "ref_52033b3b4207",
+        "kind": "route",
+        "route": "priority"
+      },
+      {
+        "id": "ref_e9561e7b09d0",
+        "kind": "route",
+        "route": "normal"
+      },
+      {
+        "false": "ref_e9561e7b09d0",
+        "id": "ref_38e53b4d77ec",
+        "kind": "decision",
+        "rule_id": "ref_aed1dd789556",
+        "snippet_id": "ref_212729efb5be",
+        "true": "ref_0148d4d04d31",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 51
+        }
+      },
+      {
+        "false": "ref_be08cdaf3765",
+        "id": "ref_ac198e0d5d63",
+        "kind": "decision",
+        "rule_id": "ref_1d4e093beee5",
+        "snippet_id": "ref_9ca2b9c594db",
+        "true": "ref_f97d8235e4b4",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      }
+    ],
+    "version": "graph-v1"
+  }
+}

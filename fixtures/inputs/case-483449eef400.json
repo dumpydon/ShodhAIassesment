@@ -1,0 +1,206 @@
+{
+  "approvals": {
+    "records": [
+      {
+        "id": "ref_1de41fbb865f",
+        "order": 20,
+        "requirement_version": "policy-pilot-03",
+        "revision": "pilot-04",
+        "rule_id": "ref_923ca310927c",
+        "status": "approved",
+        "text": "IF waiting >= 30 minutes THEN escalation"
+      },
+      {
+        "id": "ref_f8e80b8550e5",
+        "order": 1,
+        "requirement_version": "policy-pilot-04",
+        "revision": "pilot-04",
+        "rule_id": "ref_923ca310927c",
+        "status": "approved",
+        "text": "IF waiting >= 34 minutes THEN escalation"
+      },
+      {
+        "id": "ref_d0703601267f",
+        "order": 30,
+        "requirement_version": "policy-pilot-04",
+        "revision": "pilot-05",
+        "rule_id": "ref_923ca310927c",
+        "status": "approved",
+        "text": "IF waiting >= 39 minutes THEN escalation"
+      }
+    ],
+    "version": "approvals-v1"
+  },
+  "fields": {
+    "category": {
+      "nullable": true,
+      "type": "string"
+    },
+    "urgent": {
+      "type": "boolean"
+    },
+    "waiting": {
+      "nullable": true,
+      "type": "number",
+      "unit": "minutes"
+    }
+  },
+  "requirements": {
+    "rules": [
+      {
+        "id": "ref_923ca310927c",
+        "location": "policy#ref_923ca310927c",
+        "order": 30,
+        "text": "IF waiting >= 39 minutes THEN escalation"
+      },
+      {
+        "id": "ref_ed5b295d1076",
+        "location": "policy#ref_ed5b295d1076",
+        "order": 10,
+        "text": "IF category IS MISSING THEN manual"
+      },
+      {
+        "id": "ref_a3d891b96c21",
+        "location": "policy#ref_a3d891b96c21",
+        "order": 40,
+        "text": "OTHERWISE THEN normal"
+      },
+      {
+        "id": "ref_bae6523f92ae",
+        "location": "policy#ref_bae6523f92ae",
+        "order": 20,
+        "text": "IF urgent == true THEN priority"
+      }
+    ],
+    "version": "policy-pilot-04"
+  },
+  "revision": "pilot-04",
+  "schema_version": "1.0",
+  "snippets": {
+    "items": [
+      {
+        "id": "ref_23b76837ed97",
+        "source": "def decide(ticket):\n    return ticket.get(\"waiting\") is not None and ticket.get(\"waiting\") >= 34\n"
+      },
+      {
+        "id": "ref_fc0b6ffaec27",
+        "source": "def decide(ticket):\n    return ticket.get(\"category\") is None\n"
+      },
+      {
+        "id": "ref_b904f46490cb",
+        "source": "def decide(ticket):\n    return ticket.get(\"urgent\") == True\n"
+      }
+    ],
+    "version": "py-v1"
+  },
+  "specification": {
+    "rules": [
+      {
+        "id": "ref_515e72989423",
+        "order": 20,
+        "route": "priority",
+        "rule_id": "ref_bae6523f92ae",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "id": "ref_97df558c7468",
+        "order": 30,
+        "route": "escalation",
+        "rule_id": "ref_923ca310927c",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 34
+        }
+      },
+      {
+        "id": "ref_2e1a122ae491",
+        "order": 10,
+        "route": "manual",
+        "rule_id": "ref_ed5b295d1076",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      },
+      {
+        "id": "ref_b3ee5a1ce32c",
+        "order": 40,
+        "route": "normal",
+        "rule_id": "ref_a3d891b96c21",
+        "when": true
+      }
+    ],
+    "version": "spec-v1"
+  },
+  "workflow": {
+    "entry": "ref_1371ecc8e238",
+    "nodes": [
+      {
+        "id": "ref_57868189a61a",
+        "kind": "route",
+        "route": "normal"
+      },
+      {
+        "id": "ref_dacf6e452a41",
+        "kind": "route",
+        "route": "priority"
+      },
+      {
+        "id": "ref_078c1a3a7d8c",
+        "kind": "route",
+        "route": "manual"
+      },
+      {
+        "id": "ref_c1468ad6e669",
+        "kind": "route",
+        "route": "escalation"
+      },
+      {
+        "false": "ref_57868189a61a",
+        "id": "ref_614bb0d702c4",
+        "kind": "decision",
+        "rule_id": "ref_923ca310927c",
+        "snippet_id": "ref_23b76837ed97",
+        "true": "ref_c1468ad6e669",
+        "when": {
+          "field": "waiting",
+          "op": ">=",
+          "unit": "minutes",
+          "value": 34
+        }
+      },
+      {
+        "false": "ref_614bb0d702c4",
+        "id": "ref_e76962c067b7",
+        "kind": "decision",
+        "rule_id": "ref_bae6523f92ae",
+        "snippet_id": "ref_b904f46490cb",
+        "true": "ref_dacf6e452a41",
+        "when": {
+          "field": "urgent",
+          "op": "==",
+          "value": true
+        }
+      },
+      {
+        "false": "ref_e76962c067b7",
+        "id": "ref_1371ecc8e238",
+        "kind": "decision",
+        "rule_id": "ref_ed5b295d1076",
+        "snippet_id": "ref_fc0b6ffaec27",
+        "true": "ref_078c1a3a7d8c",
+        "when": {
+          "field": "category",
+          "op": "missing"
+        }
+      }
+    ],
+    "version": "graph-v1"
+  }
+}
