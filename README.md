@@ -12,6 +12,8 @@ python3 -m unittest discover -s tests && python3 -m evaluation.run
 
 The evaluator checks frozen inputs and writes reproducible reports. The [evaluation protocol](evaluation/README.md) describes the checkpoints, holdout, oracle, and metrics.
 
+The blind run used reviewer commit `1bd3e22` and scored 24/24, including 7/7 on holdout. Its reports are preserved in commit `4bce2b2`. A separate development case later exposed a replay error when unit conversion produced a numeric witness outside the ordinary literal bounds. Commit `f48b862` emits the existing exact numerator and denominator representation for such witnesses. The regression rerun over the same 24 cases reproduced the decisions, finding scores, and ablation results.
+
 Review a bundle with `python3 -m reviewer fixtures/inputs/case-44bac949132f.json`. The CLI reads standard input when the path is `-`. It emits one JSON object to standard output and uses these exit codes.
 
 | Exit | Decision | Meaning |
@@ -44,7 +46,7 @@ A response must contain one assessment for every source rule. Each assessment us
 
 Model checks allow at most two calls per run, with a four-second deadline requested per call, a 96 KiB prompt budget, a 24 KiB response limit, and a 3,000-token output budget. Fake transcripts are separate JSON arrays of response strings or `{"error": "timeout"}` and `{"error": "truncated"}` markers. The included offline verification uses fake responses and measures validation and failure handling. It provides no estimate of real-model semantic performance.
 
-A separate development smoke check captured a real response through an ephemeral Codex CLI session and replayed it through the same validator. It produced cited questions and partial model coverage. The exact input, response, runtime, and transport differences are recorded in the [live model smoke report](reports/model-live-smoke.json).
+A separate development smoke check used the blind reviewer checkpoint `1bd3e22`. It captured a real response through an ephemeral Codex CLI session and replayed it through the validation interface. It produced cited questions and partial model coverage. The exact input, response, runtime, and transport differences are recorded in the [live model smoke report](reports/model-live-smoke.json).
 
 ## Assessment material
 

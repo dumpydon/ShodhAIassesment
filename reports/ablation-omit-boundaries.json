@@ -7,8 +7,8 @@
       "evaluation/run.py": "3078a60f9224bd52ca5eb57da580b62ccd81a92295b84edd9da114177636c2a3",
       "evaluation/scoring.py": "b71199dd8a4b3a6358dc0d34d24da1917d28c1c155c210022e97e1be1a0e0337"
     },
-    "final_commit": "1bd3e2280e49ceff2bd082650a2c6b3a5552e87a",
-    "implementation_manifest_sha256": "cf3a9c96e74d80dfbf0ef56a1d1122e956a327c1086300f42e09cdc6c5afb156",
+    "final_commit": "f48b8622a7a63f1580701ce8d045f73e078cf4d5",
+    "implementation_manifest_sha256": "b4798832d4905debbb3f4b8b37313addb768483bf3bff316147d0aefa166f324",
     "platform": "Darwin-arm64",
     "python": "3.14.3",
     "real_model_performance_measured": false,
@@ -497,7 +497,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.643042
+        "runtime_ms": 0.583042
       },
       "split": "development"
     },
@@ -964,7 +964,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.688708
+        "runtime_ms": 0.66375
       },
       "split": "development"
     },
@@ -1433,7 +1433,7 @@
               "response_bytes": 38,
               "response_id": "fake-2",
               "response_sha256": "657524597d439f9a65bb5d61cdf0ed9f2fa6f6bfc9c9386b0c691e66fae3811e",
-              "runtime_ms": 0.013
+              "runtime_ms": 0.011
             }
           ],
           "calls": 2,
@@ -1471,7 +1471,7 @@
         "model_calls": 2,
         "model_retries": 1,
         "requested_model_mode": "required",
-        "runtime_ms": 0.963625
+        "runtime_ms": 0.87625
       },
       "split": "development"
     },
@@ -2008,7 +2008,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.667625
+        "runtime_ms": 0.615417
       },
       "split": "development"
     },
@@ -2436,7 +2436,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.641958
+        "runtime_ms": 0.597458
       },
       "split": "development"
     },
@@ -2887,7 +2887,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.724792
+        "runtime_ms": 0.658292
       },
       "split": "held_out"
     },
@@ -3435,7 +3435,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.695958
+        "runtime_ms": 0.616917
       },
       "split": "development"
     },
@@ -3892,7 +3892,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.63525
+        "runtime_ms": 0.607958
       },
       "split": "development"
     },
@@ -4508,7 +4508,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 1.622958
+        "runtime_ms": 1.555
       },
       "split": "held_out"
     },
@@ -4938,7 +4938,7 @@
               "response_bytes": 35,
               "response_id": "fixture-truncated",
               "response_sha256": "7531f11fc73e8d10beb897cd0a00321f36990c39c56056505946647156e4a6b6",
-              "runtime_ms": 0.005
+              "runtime_ms": 0.006
             },
             {
               "finish_reason": "stop",
@@ -4947,7 +4947,7 @@
               "response_bytes": 758,
               "response_id": "fake-2",
               "response_sha256": "e9bf941348a404a4e000a6e9e46e5e84764584c92eedcaacd7c97b183a3de4de",
-              "runtime_ms": 0.116
+              "runtime_ms": 0.118
             }
           ],
           "calls": 2,
@@ -5046,7 +5046,7 @@
         "model_calls": 2,
         "model_retries": 1,
         "requested_model_mode": "required",
-        "runtime_ms": 1.126959
+        "runtime_ms": 1.275166
       },
       "split": "development"
     },
@@ -5659,7 +5659,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.758917
+        "runtime_ms": 0.732334
       },
       "split": "development"
     },
@@ -6180,7 +6180,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.710125
+        "runtime_ms": 0.718958
       },
       "split": "development"
     },
@@ -6670,7 +6670,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.6415
+        "runtime_ms": 0.614208
       },
       "split": "development"
     },
@@ -7169,7 +7169,7 @@
         "model_calls": 2,
         "model_retries": 1,
         "requested_model_mode": "required",
-        "runtime_ms": 0.959417
+        "runtime_ms": 0.878375
       },
       "split": "development"
     },
@@ -7708,7 +7708,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.770416
+        "runtime_ms": 0.689166
       },
       "split": "held_out"
     },
@@ -8151,7 +8151,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.66575
+        "runtime_ms": 0.618792
       },
       "split": "held_out"
     },
@@ -8676,7 +8676,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.665167
+        "runtime_ms": 0.627625
       },
       "split": "development"
     },
@@ -9216,7 +9216,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.649792
+        "runtime_ms": 0.623333
       },
       "split": "development"
     },
@@ -9644,7 +9644,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.635958
+        "runtime_ms": 0.610291
       },
       "split": "development"
     },
@@ -10104,7 +10104,7 @@
               "response_bytes": 662,
               "response_id": "fake-1",
               "response_sha256": "be1b4e9792b1eb244e1546147406185726388434a248ccc59abe72882e0ec261",
-              "runtime_ms": 0.108
+              "runtime_ms": 0.095
             },
             {
               "finish_reason": "stop",
@@ -10113,7 +10113,7 @@
               "response_bytes": 662,
               "response_id": "fake-2",
               "response_sha256": "be1b4e9792b1eb244e1546147406185726388434a248ccc59abe72882e0ec261",
-              "runtime_ms": 0.09
+              "runtime_ms": 0.083
             }
           ],
           "calls": 2,
@@ -10151,7 +10151,7 @@
         "model_calls": 2,
         "model_retries": 1,
         "requested_model_mode": "required",
-        "runtime_ms": 1.122167
+        "runtime_ms": 1.0485
       },
       "split": "held_out"
     },
@@ -10670,7 +10670,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 1.678083
+        "runtime_ms": 1.612583
       },
       "split": "held_out"
     },
@@ -11130,7 +11130,7 @@
               "response_bytes": 875,
               "response_id": "fake-1",
               "response_sha256": "a0a9d9d664db59861a2f16045afbe9ef3ebd74d74c8b5bc6bfda4abc1c53537d",
-              "runtime_ms": 0.1
+              "runtime_ms": 0.105
             },
             {
               "finish_reason": "stop",
@@ -11139,7 +11139,7 @@
               "response_bytes": 861,
               "response_id": "fake-2",
               "response_sha256": "3279f41d8373c5fa0bb4817227d9b372521c1ecce3553e70067399a234b78cb1",
-              "runtime_ms": 0.091
+              "runtime_ms": 0.088
             }
           ],
           "calls": 2,
@@ -11177,7 +11177,7 @@
         "model_calls": 2,
         "model_retries": 1,
         "requested_model_mode": "required",
-        "runtime_ms": 1.135667
+        "runtime_ms": 1.178
       },
       "split": "held_out"
     },
@@ -11748,7 +11748,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.674666
+        "runtime_ms": 0.693958
       },
       "split": "development"
     },
@@ -12208,7 +12208,7 @@
               "response_bytes": 771,
               "response_id": "fake-1",
               "response_sha256": "aefd34b399a36242055cfdbcc3c11dad8bf75f258b45c46b73135a0734dfd45c",
-              "runtime_ms": 0.108
+              "runtime_ms": 0.103
             },
             {
               "finish_reason": "stop",
@@ -12217,7 +12217,7 @@
               "response_bytes": 771,
               "response_id": "fake-2",
               "response_sha256": "aefd34b399a36242055cfdbcc3c11dad8bf75f258b45c46b73135a0734dfd45c",
-              "runtime_ms": 0.094
+              "runtime_ms": 0.089
             }
           ],
           "calls": 2,
@@ -12255,7 +12255,7 @@
         "model_calls": 2,
         "model_retries": 1,
         "requested_model_mode": "required",
-        "runtime_ms": 1.167375
+        "runtime_ms": 1.079708
       },
       "split": "development"
     }

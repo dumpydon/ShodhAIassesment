@@ -1,6 +1,12 @@
 # Controlled evaluation
 
-The suite has 24 synthetic reviews. The development split has 17 cases and the held-out split has seven. Manual labels expect six passes, ten changes required, and eight incomplete reviews. The dataset manifest was committed before any scoring. Held-out inputs, the generator, and case-level labels stayed outside the implementation workspace until the final reviewer checkpoint was recorded.
+The suite has 24 synthetic reviews. The development split has 17 cases and the held-out split has seven. Manual labels expect six passes, ten changes required, and eight incomplete reviews.
+
+## Evaluation history
+
+The dataset was frozen at `dataset-freeze-v1`. Held-out inputs, the generator, and case-level labels stayed outside the implementation workspace until `reviewer-freeze-v1` recorded the reviewer used in the first blind run. Commit `4bce2b2b789ae6fd1e159d4bd37067a1a9c11de2` preserves the four original reports and their implementation manifest. [Original reports](https://github.com/dumpydon/ShodhAIassesment/tree/4bce2b2b789ae6fd1e159d4bd37067a1a9c11de2/reports) · [Original implementation manifest](https://github.com/dumpydon/ShodhAIassesment/blob/4bce2b2b789ae6fd1e159d4bd37067a1a9c11de2/evaluation/frozen_implementations.json)
+
+After the holdout was disclosed, a separate development regression found that a large numeric witness produced by unit conversion could fail replay. The active reports use the fix from `reviewer-maintenance-v1` and replay the same 24 cases with the same labels, settings, and scoring code. The replay reproduced all decisions, findings, counterexamples, and fake transport checks.
 
 ## Reproduce
 
@@ -8,7 +14,7 @@ The suite has 24 synthetic reviews. The development split has 17 cases and the h
 python3 -m unittest discover -s tests && python3 -m evaluation.run
 ```
 
-The evaluator checks the dataset and both implementation snapshots against their SHA-256 manifests before and after scoring. It writes raw reports and measured metrics to `reports/reproduced/` by default. Use `--output <directory>` for another destination or `--split development` for the development results alone. Runtime measurements vary across runs. The baseline commit and the final commit are recorded in `frozen_implementations.json`.
+The evaluator checks the dataset and both implementation snapshots against their SHA-256 manifests before and after scoring. It writes raw reports and measured metrics to `reports/reproduced/` by default. Use `--output <directory>` for another destination or `--split development` for the development results alone. Runtime measurements vary across runs. The active baseline and patched reviewer commits are recorded in `frozen_implementations.json`.
 
 The fixed seed and per-case fake-client settings are in `settings.json`. To regenerate data for inspection, use `python3 -m evaluation.generate --output <empty-directory>`. The expected fixture, label, and setting hashes are in `frozen_dataset.json`.
 
@@ -20,9 +26,9 @@ The fixed seed and per-case fake-client settings are in `settings.json`. To rege
 - The baseline, final, and ablated reviewers see the same inputs and requested settings. The ablation removes singleton numeric boundary cells. The frozen initial checkpoint has no model transport, so its fake-requested cases record zero calls and explicitly show that the model check was unexercised.
 - The resource totals measure elapsed reviewer calls and use the recorded transport for fake calls and retries. Fake-client cases verify retry reasons and that the model payload contains the bundle and deterministic context. No external model was called and semantic model performance was not measured.
 
-## Reference run
+## First blind run
 
-| Measure | Baseline | Final | Without exact boundaries |
+| Measure | Baseline | Blind reviewer | Without exact boundaries |
 | --- | ---: | ---: | ---: |
 | Exact decisions | 13/24 | 24/24 | 22/24 |
 | Exact held-out decisions | 2/7 | 7/7 | 6/7 |
@@ -49,8 +55,8 @@ The final unsupported findings include two genuine omissions with synthesized ab
 | `fixtures/inputs/` | Synthetic reviewer inputs |
 | `evaluation/labels.json` | Manual case labels, accepted anchors, and independent routing parameters |
 | `evaluation/frozen_dataset.json` | SHA-256 freeze for inputs, settings, labels, generator, oracle, and fake transcripts |
-| `evaluation/frozen_implementations.json` | Git commits and SHA-256 source hashes for the baseline and final reviewer |
-| `reports/baseline.json` | Initial working checkpoint responses and case-level scores |
-| `reports/final.json` | Final responses and case-level scores |
-| `reports/ablation-omit-boundaries.json` | Ablated responses and case-level scores |
-| `reports/metrics.json` | Counts, denominators, split metrics, resource use, and changed outcomes |
+| `evaluation/frozen_implementations.json` | Git commits and SHA-256 source hashes for the baseline and patched reviewer |
+| `reports/baseline.json` | Initial working checkpoint responses and case-level scores in the replay |
+| `reports/final.json` | Patched reviewer responses and case-level scores in the replay |
+| `reports/ablation-omit-boundaries.json` | Ablated patched reviewer responses and case-level scores |
+| `reports/metrics.json` | Replay counts, denominators, split metrics, resource use, and changed outcomes |

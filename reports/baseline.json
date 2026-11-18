@@ -7,8 +7,8 @@
       "evaluation/run.py": "3078a60f9224bd52ca5eb57da580b62ccd81a92295b84edd9da114177636c2a3",
       "evaluation/scoring.py": "b71199dd8a4b3a6358dc0d34d24da1917d28c1c155c210022e97e1be1a0e0337"
     },
-    "final_commit": "1bd3e2280e49ceff2bd082650a2c6b3a5552e87a",
-    "implementation_manifest_sha256": "cf3a9c96e74d80dfbf0ef56a1d1122e956a327c1086300f42e09cdc6c5afb156",
+    "final_commit": "f48b8622a7a63f1580701ce8d045f73e078cf4d5",
+    "implementation_manifest_sha256": "b4798832d4905debbb3f4b8b37313addb768483bf3bff316147d0aefa166f324",
     "platform": "Darwin-arm64",
     "python": "3.14.3",
     "real_model_performance_measured": false,
@@ -89,7 +89,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.131875
+        "runtime_ms": 0.152334
       },
       "split": "development"
     },
@@ -204,7 +204,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.057292
+        "runtime_ms": 0.059792
       },
       "split": "development"
     },
@@ -266,7 +266,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "required",
-        "runtime_ms": 0.057209
+        "runtime_ms": 0.056584
       },
       "split": "development"
     },
@@ -387,7 +387,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.050792
+        "runtime_ms": 0.052
       },
       "split": "development"
     },
@@ -449,7 +449,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.049709
+        "runtime_ms": 0.052291
       },
       "split": "development"
     },
@@ -511,7 +511,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.054291
+        "runtime_ms": 0.054041
       },
       "split": "held_out"
     },
@@ -640,7 +640,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.044125
+        "runtime_ms": 0.045167
       },
       "split": "development"
     },
@@ -817,7 +817,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.054584
+        "runtime_ms": 0.055584
       },
       "split": "development"
     },
@@ -950,7 +950,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.053083
+        "runtime_ms": 0.053875
       },
       "split": "held_out"
     },
@@ -1012,7 +1012,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "required",
-        "runtime_ms": 0.048375
+        "runtime_ms": 0.049667
       },
       "split": "development"
     },
@@ -1189,7 +1189,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.047292
+        "runtime_ms": 0.048875
       },
       "split": "development"
     },
@@ -1304,7 +1304,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.040667
+        "runtime_ms": 0.040416
       },
       "split": "development"
     },
@@ -1419,7 +1419,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.037708
+        "runtime_ms": 0.037375
       },
       "split": "development"
     },
@@ -1481,7 +1481,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "required",
-        "runtime_ms": 0.046125
+        "runtime_ms": 0.048042
       },
       "split": "development"
     },
@@ -1602,7 +1602,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.04825
+        "runtime_ms": 0.049417
       },
       "split": "held_out"
     },
@@ -1679,7 +1679,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.04975
+        "runtime_ms": 0.048667
       },
       "split": "held_out"
     },
@@ -1926,7 +1926,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.050917
+        "runtime_ms": 0.049542
       },
       "split": "development"
     },
@@ -2047,7 +2047,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.053083
+        "runtime_ms": 0.053209
       },
       "split": "development"
     },
@@ -2109,7 +2109,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.04875
+        "runtime_ms": 0.048334
       },
       "split": "development"
     },
@@ -2171,7 +2171,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "required",
-        "runtime_ms": 0.047
+        "runtime_ms": 0.046625
       },
       "split": "held_out"
     },
@@ -2323,7 +2323,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.04625
+        "runtime_ms": 0.046625
       },
       "split": "held_out"
     },
@@ -2385,7 +2385,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "required",
-        "runtime_ms": 0.048042
+        "runtime_ms": 0.043917
       },
       "split": "held_out"
     },
@@ -2462,7 +2462,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "off",
-        "runtime_ms": 0.046792
+        "runtime_ms": 0.044625
       },
       "split": "development"
     },
@@ -2524,7 +2524,7 @@
         "model_calls": 0,
         "model_retries": 0,
         "requested_model_mode": "required",
-        "runtime_ms": 0.043958
+        "runtime_ms": 0.0425
       },
       "split": "development"
     }

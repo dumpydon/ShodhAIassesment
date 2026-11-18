@@ -237,8 +237,8 @@
             "fake_checks_exercised": 6,
             "model_calls": 12,
             "model_retries": 6,
-            "runtime_median_ms": 1.125,
-            "runtime_total_ms": 6.475,
+            "runtime_median_ms": 1.064,
+            "runtime_total_ms": 6.336,
             "verified_fake_traces": 6
           },
           "no_model": {
@@ -246,8 +246,8 @@
             "fake_checks_exercised": 0,
             "model_calls": 0,
             "model_retries": 0,
-            "runtime_median_ms": 0.671,
-            "runtime_total_ms": 14.171,
+            "runtime_median_ms": 0.625,
+            "runtime_total_ms": 13.439,
             "verified_fake_traces": 0
           },
           "real_model": {
@@ -386,8 +386,8 @@
             "fake_checks_exercised": 4,
             "model_calls": 8,
             "model_retries": 4,
-            "runtime_median_ms": 1.045,
-            "runtime_total_ms": 4.217,
+            "runtime_median_ms": 0.979,
+            "runtime_total_ms": 4.109,
             "verified_fake_traces": 4
           },
           "no_model": {
@@ -395,8 +395,8 @@
             "fake_checks_exercised": 0,
             "model_calls": 0,
             "model_retries": 0,
-            "runtime_median_ms": 0.665,
-            "runtime_total_ms": 8.709,
+            "runtime_median_ms": 0.617,
+            "runtime_total_ms": 8.305,
             "verified_fake_traces": 0
           },
           "real_model": {
@@ -534,8 +534,8 @@
             "fake_checks_exercised": 2,
             "model_calls": 4,
             "model_retries": 2,
-            "runtime_median_ms": 1.129,
-            "runtime_total_ms": 2.258,
+            "runtime_median_ms": 1.113,
+            "runtime_total_ms": 2.226,
             "verified_fake_traces": 2
           },
           "no_model": {
@@ -543,8 +543,8 @@
             "fake_checks_exercised": 0,
             "model_calls": 0,
             "model_retries": 0,
-            "runtime_median_ms": 0.77,
-            "runtime_total_ms": 5.462,
+            "runtime_median_ms": 0.689,
+            "runtime_total_ms": 5.134,
             "verified_fake_traces": 0
           },
           "real_model": {
@@ -685,8 +685,8 @@
             "fake_checks_exercised": 0,
             "model_calls": 0,
             "model_retries": 0,
-            "runtime_median_ms": 0.048,
-            "runtime_total_ms": 0.291,
+            "runtime_median_ms": 0.047,
+            "runtime_total_ms": 0.287,
             "verified_fake_traces": 0
           },
           "no_model": {
@@ -694,8 +694,8 @@
             "fake_checks_exercised": 0,
             "model_calls": 0,
             "model_retries": 0,
-            "runtime_median_ms": 0.05,
-            "runtime_total_ms": 0.965,
+            "runtime_median_ms": 0.049,
+            "runtime_total_ms": 0.992,
             "verified_fake_traces": 0
           },
           "real_model": {
@@ -834,8 +834,8 @@
             "fake_checks_exercised": 0,
             "model_calls": 0,
             "model_retries": 0,
-            "runtime_median_ms": 0.047,
-            "runtime_total_ms": 0.196,
+            "runtime_median_ms": 0.049,
+            "runtime_total_ms": 0.197,
             "verified_fake_traces": 0
           },
           "no_model": {
@@ -844,7 +844,7 @@
             "model_calls": 0,
             "model_retries": 0,
             "runtime_median_ms": 0.05,
-            "runtime_total_ms": 0.714,
+            "runtime_total_ms": 0.74,
             "verified_fake_traces": 0
           },
           "real_model": {
@@ -982,8 +982,8 @@
             "fake_checks_exercised": 0,
             "model_calls": 0,
             "model_retries": 0,
-            "runtime_median_ms": 0.048,
-            "runtime_total_ms": 0.095,
+            "runtime_median_ms": 0.045,
+            "runtime_total_ms": 0.091,
             "verified_fake_traces": 0
           },
           "no_model": {
@@ -991,8 +991,8 @@
             "fake_checks_exercised": 0,
             "model_calls": 0,
             "model_retries": 0,
-            "runtime_median_ms": 0.05,
-            "runtime_total_ms": 0.252,
+            "runtime_median_ms": 0.049,
+            "runtime_total_ms": 0.253,
             "verified_fake_traces": 0
           },
           "real_model": {
@@ -1133,8 +1133,8 @@
             "fake_checks_exercised": 6,
             "model_calls": 12,
             "model_retries": 6,
-            "runtime_median_ms": 1.167,
-            "runtime_total_ms": 6.803,
+            "runtime_median_ms": 1.097,
+            "runtime_total_ms": 6.387,
             "verified_fake_traces": 6
           },
           "no_model": {
@@ -1142,8 +1142,8 @@
             "fake_checks_exercised": 0,
             "model_calls": 0,
             "model_retries": 0,
-            "runtime_median_ms": 0.751,
-            "runtime_total_ms": 16.366,
+            "runtime_median_ms": 0.72,
+            "runtime_total_ms": 15.8,
             "verified_fake_traces": 0
           },
           "real_model": {
@@ -1282,8 +1282,8 @@
             "fake_checks_exercised": 4,
             "model_calls": 8,
             "model_retries": 4,
-            "runtime_median_ms": 1.133,
-            "runtime_total_ms": 4.465,
+            "runtime_median_ms": 1.054,
+            "runtime_total_ms": 4.14,
             "verified_fake_traces": 4
           },
           "no_model": {
@@ -1291,8 +1291,8 @@
             "fake_checks_exercised": 0,
             "model_calls": 0,
             "model_retries": 0,
-            "runtime_median_ms": 0.734,
-            "runtime_total_ms": 10.234,
+            "runtime_median_ms": 0.719,
+            "runtime_total_ms": 9.901,
             "verified_fake_traces": 0
           },
           "real_model": {
@@ -1430,8 +1430,8 @@
             "fake_checks_exercised": 2,
             "model_calls": 4,
             "model_retries": 2,
-            "runtime_median_ms": 1.169,
-            "runtime_total_ms": 2.337,
+            "runtime_median_ms": 1.124,
+            "runtime_total_ms": 2.247,
             "verified_fake_traces": 2
           },
           "no_model": {
@@ -1439,8 +1439,8 @@
             "fake_checks_exercised": 0,
             "model_calls": 0,
             "model_retries": 0,
-            "runtime_median_ms": 0.82,
-            "runtime_total_ms": 6.131,
+            "runtime_median_ms": 0.821,
+            "runtime_total_ms": 5.899,
             "verified_fake_traces": 0
           },
           "real_model": {
@@ -1519,8 +1519,8 @@
       "evaluation/run.py": "3078a60f9224bd52ca5eb57da580b62ccd81a92295b84edd9da114177636c2a3",
       "evaluation/scoring.py": "b71199dd8a4b3a6358dc0d34d24da1917d28c1c155c210022e97e1be1a0e0337"
     },
-    "final_commit": "1bd3e2280e49ceff2bd082650a2c6b3a5552e87a",
-    "implementation_manifest_sha256": "cf3a9c96e74d80dfbf0ef56a1d1122e956a327c1086300f42e09cdc6c5afb156",
+    "final_commit": "f48b8622a7a63f1580701ce8d045f73e078cf4d5",
+    "implementation_manifest_sha256": "b4798832d4905debbb3f4b8b37313addb768483bf3bff316147d0aefa166f324",
     "platform": "Darwin-arm64",
     "python": "3.14.3",
     "real_model_performance_measured": false,
